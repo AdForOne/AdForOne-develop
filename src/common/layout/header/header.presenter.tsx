@@ -1,5 +1,23 @@
-import { Outline } from "./header.styles";
+import Image from "next/image";
+import HeaderLoginBtn from "../../btns/header.loginBtn";
+import HeaderSignInBtn from "../../btns/header.signinBtn";
+import * as S from "./header.styles";
 
 export default function HeaderPresenter() {
-  return <Outline>hello</Outline>;
+  return (
+    <S.Outline>
+      <S.Logo>
+        <Image
+          src="/header/Logo.png"
+          alt="웹페이지 상단 ADFO로고"
+          width="130"
+          height="32"
+        ></Image>
+      </S.Logo>
+      <S.HeaderBtnWrapper>
+        <HeaderLoginBtn />
+        <HeaderSignInBtn />
+      </S.HeaderBtnWrapper>
+    </S.Outline>
+  );
 }
