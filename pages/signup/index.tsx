@@ -1,7 +1,5 @@
 import SignupContainer from "../../src/component/units/Signup/signup.container";
 
 export default function SignupPage() {
-  <>
-    <SignupContainer />
-  </>;
+  return <SignupContainer />;
 }
