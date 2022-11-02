@@ -9,21 +9,8 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import * as SU from "./signup.styles";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
-
-const SNS = [
-  { label: "Instargram" },
-  { label: "FaceBook" },
-  { label: "Youtube" },
-];
-
-const categories = [{ title: "음악" }, { title: "영상편집" }, { title: "IT" }];
-
-export default function SignupPresenter() {
+export default function SignupPresenter(props: any) {
   return (
     <SU.Wrapper>
       <Image
@@ -74,10 +61,10 @@ export default function SignupPresenter() {
           margin="normal"
           required
           fullWidth
-          name="password"
+          name="Confirm password"
           label="비밀번호 확인"
           type="password"
-          id="password"
+          id="Confirm password"
           autoComplete="current-password"
           helperText="비밀번호를 확인해주세요"
         />
@@ -86,9 +73,9 @@ export default function SignupPresenter() {
         <Autocomplete
           disablePortal
           id="combo-box-demo"
-          options={SNS}
+          options={props.SNS}
           renderInput={(params) => (
-            <TextField {...params} margin="normal" label="대표 SNS" />
+            <TextField {...params} margin="normal" label="관심 SNS" />
           )}
         />
 
@@ -96,14 +83,14 @@ export default function SignupPresenter() {
         <Autocomplete
           multiple
           id="checkboxes-tags-demo"
-          options={categories}
+          options={props.categories}
           disableCloseOnSelect
           getOptionLabel={(option) => option.title}
           renderOption={(props, option, { selected }) => (
             <li {...props}>
               <Checkbox
-                icon={icon}
-                checkedIcon={checkedIcon}
+                icon={props.icon}
+                checkedIcon={props.checkedIcon}
                 style={{ marginRight: 8 }}
                 checked={selected}
               />
