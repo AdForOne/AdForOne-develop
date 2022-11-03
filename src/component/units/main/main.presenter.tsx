@@ -1,16 +1,47 @@
+import { Button } from "@mui/material";
+import CardContainer from "../../../common/card/card";
 import * as MS from "./main.styles";
 
-export default function MainPresenter() {
+export default function MainPresenter(props: any) {
   return (
     <MS.Wrapper>
+      {/* 메인광고 및 사이트 소개 */}
       <MS.TestImg src="./testimg/test.png" />
+
       {/* 카테고리 div */}
+      {/* 베스트 카테고리만 노출*/}
       <MS.CategoryWrapper>
-        <p>Find</p>
-        <p>빠르게 인플루언서를 찾아보세요!</p>
-        {/* Grid 이용해서 카테고리 이미지 만들기?? */}
+        <MS.FindText>FIND</MS.FindText>
+        <MS.Text>빠르게 인플루언서를 찾아보세요!</MS.Text>
+        <MS.CategoryGridBox>
+          {props.DataCard.map((el: any, index: number) => (
+            <MS.CategoryBox key={index}>
+              <MS.TestImgCategory src="https://source.unsplash.com/random" />
+              {/* {el.Category} */}
+            </MS.CategoryBox>
+          ))}
+        </MS.CategoryGridBox>
       </MS.CategoryWrapper>
-      메인페이지입니다.
+
+      {/* 카드 div */}
+      {/* 무한스크롤 적용시키기?*/}
+      <MS.CardGridBox>
+        {props.DataCard.slice(0, 6).map((el: any, index: number) => (
+          <div key={index}>
+            <CardContainer />
+            {/* {el.title} */}
+          </div>
+        ))}
+      </MS.CardGridBox>
+      <MS.BtnBox>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={props.MoveBoardListBtn}
+        >
+          더 보러 가기
+        </Button>
+      </MS.BtnBox>
     </MS.Wrapper>
   );
 }

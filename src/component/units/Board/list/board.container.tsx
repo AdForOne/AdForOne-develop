@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import MainPresenter from "./main.presenter";
+import BoardListPresenter from "./board.presenter";
 
 const DataCard = [
   { Category: "카테고리1", title: "카드1" },
@@ -13,12 +12,6 @@ const DataCard = [
   { Category: "카테고리9", title: "카드9" },
 ];
 
-export default function MainContainer() {
-  const router = useRouter();
-  const MoveBoardListBtn = () => {
-    router.push("./board/list");
-  };
-  return (
-    <MainPresenter DataCard={DataCard} MoveBoardListBtn={MoveBoardListBtn} />
-  );
+export default function BoardListContainer() {
+  return <BoardListPresenter DataCard={DataCard} />;
 }
