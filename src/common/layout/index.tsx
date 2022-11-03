@@ -9,7 +9,7 @@ const Outline = styled.div`
 
 const Body = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
 export default function Layout(props: any) {

@@ -1,21 +1,15 @@
 import styled from "@emotion/styled";
+
+export const Outline = styled.div`
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+`;
 export const DivideLine = styled.div`
   width: 100%;
   border-top: 2px solid #c4c4c4;
   margin: 5px 0px;
 `;
-export const Outline = styled.div`
-  background-color: #fff;
-  width: 100%;
-  padding: 30px;
-`;
-export const PageName = styled.div`
-  width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 32px;
-`;
-// 헤더 스타일
 export const Header = styled.header`
   width: 100%;
   display: flex;
@@ -23,7 +17,9 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: flex-start;
 `;
+
 export const HeaderImg = styled.div``;
+
 export const HeaderInfo = styled.div`
   width: 72%;
 
@@ -75,42 +71,36 @@ export const Section = styled.section`
   align-items: flex-start;
 `;
 export const SectionInfo = styled.div`
-  font-size: 24px;
-  font-weight: 700;
+  width: 100%;
 `;
 export const SectionInfoText = styled.div`
   font-size: 19px;
   font-weight: 500;
 `;
-
-// 링크 스타일
-export const LinkWrapper = styled.div`
+export const SectionService = styled.div`
   width: 100%;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-`;
-export const LinkInfo = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-`;
-export const LinkInfoText = styled.div`
-  width: 100%;
-  font-size: 19px;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-bottom: 50px;
 `;
 
-export const MPADLinkInputWrapper = styled.div`
+export const PriceWrapper = styled.div`
   width: 100%;
-  padding: 5px 0px;
+  padding-top: 40px;
+`;
+export const PriceBox = styled.div`
+  width: 100%;
+  padding: 10px 0px;
+
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+`;
+export const PriceImg = styled.div``;
+export const PriceInfo = styled.div`
+  width: 83%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 `;
