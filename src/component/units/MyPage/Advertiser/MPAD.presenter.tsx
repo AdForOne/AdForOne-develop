@@ -1,8 +1,8 @@
 import Image from "next/image";
-import MPChangeBtn from "../../../../common/btns/MP.ChangeBtn";
-import MPADChatBtn from "../../../../common/btns/MPAD.ChatBtn";
-import MPADLinkBtn from "../../../../common/btns/MPAD.LinkBtn";
-import MPADLinkInput from "../../../../common/inputs/MPAD.LinkInput";
+import MPChangeBtn from "../../../../common/btns/MPAD/MP.ChangeBtn";
+import MPADChatBtn from "../../../../common/btns/MPAD/MPAD.ChatBtn";
+import MPADLinkBtn from "../../../../common/btns/MPAD/MPAD.LinkBtn";
+import MPADLinkInput from "../../../../common/inputs/MP/MPAD.LinkInput";
 import CloseIcon from "@mui/icons-material/Close";
 import Tags from "../../../../common/tags/MPAD.Tags";
 import * as S from "./MPAD.styles";
@@ -17,8 +17,8 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
           <Image
             src="/MyPage/DefaultImg.png"
             alt="사용자 기본이미지"
-            width="48"
-            height="48"
+            width="300"
+            height="200"
           />
         </S.HeaderImg>
         <S.HeaderInfo>

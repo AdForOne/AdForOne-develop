@@ -3,7 +3,7 @@ import MyPageADContainer from "../../src/component/units/MyPage/Advertiser/MPAD.
 import MyPageIFContainer from "../../src/component/units/MyPage/Influencer/MPIF.container";
 
 export default function MyPage() {
-  const [isAD, setIsAD] = useState(true);
+  const [isAD, setIsAD] = useState(false);
 
   return isAD ? <MyPageADContainer /> : <MyPageIFContainer />;
 }
