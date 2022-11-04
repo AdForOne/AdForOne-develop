@@ -13,6 +13,7 @@ export const Outline = styled.div`
 
 export const Logo = styled.div`
   width: 130px;
+  cursor: pointer;
 `;
 export const LogoImg = styled.img``;
 export const HeaderBtnWrapper = styled.div`

@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 
-export default function HeaderLoginBtn() {
+export default function HeaderLoginBtn(props) {
   const HeaderLoginBtn = styled(Button)`
     width: 130px;
     height: 40px;
@@ -15,5 +15,9 @@ export default function HeaderLoginBtn() {
       background-color: #e4e4e4;
     }
   `;
-  return <HeaderLoginBtn>로그인</HeaderLoginBtn>;
+  return (
+    <HeaderLoginBtn id={props.id} onClick={props.onClick}>
+      로그인
+    </HeaderLoginBtn>
+  );
 }

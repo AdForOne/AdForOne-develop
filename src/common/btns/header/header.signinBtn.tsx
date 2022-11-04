@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 
-export default function HeaderSignInBtn() {
+export default function HeaderSignInBtn(props: any) {
   const HeaderSignInBtn = styled(Button)`
     width: 130px;
     height: 40px;
@@ -15,5 +15,9 @@ export default function HeaderSignInBtn() {
       background-color: #0883d5;
     }
   `;
-  return <HeaderSignInBtn>회원가입</HeaderSignInBtn>;
+  return (
+    <HeaderSignInBtn id={props.id} onClick={props.onClick}>
+      회원가입
+    </HeaderSignInBtn>
+  );
 }
