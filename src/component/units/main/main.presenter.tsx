@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import CardContainer from "../../../common/card/card";
+import Category from "../../../common/category/category";
 import * as MS from "./main.styles";
 
 export default function MainPresenter(props: any) {
@@ -16,8 +17,7 @@ export default function MainPresenter(props: any) {
         <MS.CategoryGridBox>
           {props.DataCard.map((el: any, index: number) => (
             <MS.CategoryBox key={index}>
-              <MS.TestImgCategory src="https://source.unsplash.com/random" />
-              {/* {el.Category} */}
+              <Category />
             </MS.CategoryBox>
           ))}
         </MS.CategoryGridBox>

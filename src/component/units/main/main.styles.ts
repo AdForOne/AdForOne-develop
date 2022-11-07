@@ -22,11 +22,6 @@ export const CategoryWrapper = styled.div`
   margin-bottom: 10rem;
 `;
 
-export const TestImgCategory = styled.img`
-  width: 99px;
-  height: 99px;
-`;
-
 export const CategoryGridBox = styled.div`
   display: grid;
   place-items: center;

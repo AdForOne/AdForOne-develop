@@ -18,7 +18,10 @@ export default function CardContainer() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            인플루언서
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="#1976D2">
+            2022-10-25 12:15
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -26,8 +29,12 @@ export default function CardContainer() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+          <Button variant="contained" disableElevation size="small">
+            카테고리1
+          </Button>
+          <Button variant="contained" disableElevation size="small">
+            카테고리2
+          </Button>
         </CardActions>
       </Card>
     </div>
