@@ -2,10 +2,14 @@ import Image from "next/image";
 import Tags from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPADRead.styles";
 
-export default function MPADReadPresenter() {
+export default function MPADReadPresenter(props: any) {
   return (
     <S.Outline>
-      <S.PageName>ㅁㅁㅁ님의 마이페이지</S.PageName>
+      <button onClick={props.onClickChangePage}>
+        {/* (파이어베이스 적용시 제거) */}
+        변경
+      </button>
+      <S.PageName>AD(Read)님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
           <Image
@@ -40,6 +44,23 @@ export default function MPADReadPresenter() {
           <S.InfoText></S.InfoText>
         </S.HeaderInfo>
       </S.Header>
+      <S.Section>
+        <S.SectionInfo>사업체 및 상품 간단 소개글</S.SectionInfo>
+        <S.DivideLine></S.DivideLine>
+        <S.SectionInfoText>
+          Sunt laboris veniam culpa ipsum sint ipsum cillum sint duis deserunt
+          ex magna consequat.Sunt laboris veniam culpa ipsum sint ipsum cillum
+          sint duis deserunt ex magna consequat.Sunt laboris veniam culpa ipsum
+          sint ipsum cillum sint duis deserunt ex magna consequat.Sunt laboris
+          veniam culpa ipsum sint ipsum cillum sint duis deserunt ex magna
+          consequat.Sunt laboris veniam culpa ipsum sint ipsum cillum sint duis
+          deserunt ex magna consequat.
+        </S.SectionInfoText>
+        <S.DivideLine></S.DivideLine>
+        <S.LinkInfo>회사, 제품 관련 링크</S.LinkInfo>
+        <S.DivideLine></S.DivideLine>
+        <S.LinkInfoText>LinkHere</S.LinkInfoText>
+      </S.Section>
     </S.Outline>
   );
 }

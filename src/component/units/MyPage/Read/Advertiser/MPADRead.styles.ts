@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const DivideLine = styled.div`
   width: 100%;
   border-top: 2px solid #c4c4c4;
-  margin: 5px 0px;
+  margin: 15px 0px;
 `;
 export const Outline = styled.div`
   background-color: #fff;
@@ -64,4 +64,39 @@ export const InfoText = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+`;
+
+export const Section = styled.section`
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+export const SectionInfo = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+`;
+export const SectionInfoText = styled.div`
+  font-size: 19px;
+  font-weight: 500;
+`;
+
+export const LinkInfo = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const LinkInfoText = styled.div`
+  width: 100%;
+  height: 50px;
+  font-size: 19px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
 `;
