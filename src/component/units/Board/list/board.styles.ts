@@ -24,11 +24,6 @@ export const Text = styled.p`
   font-size: 20px;
 `;
 
-export const TestImgCategory = styled.img`
-  width: 99px;
-  height: 99px;
-`;
-
 export const CategoryGridBox = styled.div`
   display: grid;
   place-items: center;

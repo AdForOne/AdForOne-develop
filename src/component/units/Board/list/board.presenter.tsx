@@ -1,4 +1,5 @@
 import CardContainer from "../../../../common/card/card";
+import Category from "../../../../common/category/category";
 import * as BS from "./board.styles";
 
 export default function BoardListPresenter(props: any) {
@@ -12,8 +13,7 @@ export default function BoardListPresenter(props: any) {
         <BS.CategoryGridBox>
           {props.DataCard.map((el: any, index: number) => (
             <BS.CategoryBox key={index}>
-              <BS.TestImgCategory src="https://source.unsplash.com/random" />
-              {/* {el.Category} */}
+              <Category />
             </BS.CategoryBox>
           ))}
         </BS.CategoryGridBox>
@@ -23,7 +23,6 @@ export default function BoardListPresenter(props: any) {
         {props.DataCard.map((el: any, index: number) => (
           <div key={index}>
             <CardContainer />
-            {/* {el.title} */}
           </div>
         ))}
       </BS.CardGridBox>
