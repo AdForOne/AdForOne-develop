@@ -65,3 +65,33 @@ export const InfoText = styled.div`
   flex-direction: row;
   align-items: center;
 `;
+
+export const Section = styled.section`
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+export const SectionInfo = styled.div`
+  width: 100%;
+`;
+export const SectionInfoText = styled.div`
+  font-size: 19px;
+  font-weight: 500;
+`;
+export const SectionService = styled.div`
+  width: 100%;
+  padding-bottom: 50px;
+`;
+export const SectionSimpleText = styled.div`
+  width: 100%;
+`;
+export const PriceCardWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;

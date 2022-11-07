@@ -1,11 +1,14 @@
 import Image from "next/image";
+import MPIFPriceCard from "../../../../../common/card/MPIF.PriceCard";
+import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
 import Tags from "../../../../../common/tags/MPAD.Tags";
-import * as S from "./MPifRead.styles";
+import * as S from "./MPIFRead.styles";
 
-export default function MPADReadPresenter() {
+export default function MPIFReadPresenter(props: any) {
   return (
     <S.Outline>
-      <S.PageName>ㅁㅁㅁ님의 마이페이지</S.PageName>
+      <button onClick={props.onClickChangePage}>변경</button>
+      <S.PageName>inf(Read)님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
           <Image
@@ -40,6 +43,39 @@ export default function MPADReadPresenter() {
           <S.InfoText></S.InfoText>
         </S.HeaderInfo>
       </S.Header>
+      <S.Section>
+        <S.SectionInfo>
+          <h1>간단 소개글</h1>
+          <S.SectionSimpleText>
+            Consequat pariatur est esse velit. Ipsum nostrud fugiat amet commodo
+            ea quis mollit nulla. Ipsum aliqua eu adipisicing occaecat
+            incididunt deserunt nulla nostrud ipsum proident in pariatur
+            consequat. Aliqua occaecat aliquip anim eu voluptate consectetur
+            reprehenderit esse magna et fugiat excepteur adipisicing.
+            Exercitation ea incididunt reprehenderit ex aute magna dolore. Anim
+            tempor eiusmod incididunt ullamco nisi duis minim quis nulla
+            incididunt eu.
+          </S.SectionSimpleText>
+        </S.SectionInfo>
+        <S.DivideLine></S.DivideLine>
+        <h1>서비스 설명</h1>
+        <S.SectionService>
+          Veniam elit proident ex qui laborum consequat veniam sint.Veniam elit
+          proident ex qui laborum consequat veniam sint.Veniam elit proident ex
+          qui laborum consequat veniam sint.Veniam elit proident ex qui laborum
+          consequat veniam sint.Veniam elit proident ex qui laborum consequat
+          veniam sint.Veniam elit proident ex qui laborum consequat veniam
+          sint.Veniam elit proident ex qui laborum consequat veniam sint.Veniam
+          elit proident ex qui laborum consequat veniam sint.
+        </S.SectionService>
+      </S.Section>
+      <S.DivideLine></S.DivideLine>
+      <h1>가격정보</h1>
+      <S.PriceCardWrapper>
+        <MPIFPriceCard />
+        <MPIFPriceCard />
+        <MPIFPriceCard />
+      </S.PriceCardWrapper>
     </S.Outline>
   );
 }
