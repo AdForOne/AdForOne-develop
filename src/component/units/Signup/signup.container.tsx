@@ -6,8 +6,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+// useSignIn 훅
+import useSignIn from "../../../common/firebase/firebase.auth";
 const schma = yup.object({
+  nickName: yup.string().required("닉네임을 입력 해 주세요"),
   email: yup
     .string()
     .email("이메일 형식이 적합하지 않습니다!")
@@ -16,6 +18,7 @@ const schma = yup.object({
   password: yup
     .string()
     .required("비밀번호는 필수 입력사항입니다.")
+    .min(6, "비밀번호는 최소 6자리 이상으로 입력해주세요")
     .max(10, "비밀번호는 최대 10자리 이내로 입력해주세요")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{0,10}$/,
@@ -36,6 +39,7 @@ export default function SignupContainer() {
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
   const [value, setValue] = useState<string>("인플루언서");
   const [Cate, setCate] = useState<any>([]);
+  const { signIn } = useSignIn();
 
   const SNS = [
     { label: "Instargram", id: 1 },
@@ -62,19 +66,26 @@ export default function SignupContainer() {
 
   const onClickSignUp = (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
-    if (value != "인플루언서") {
-      console.log({
-        email: data.email,
-        password: data.password,
-      });
+    if (value !== "인플루언서") {
+      signIn(
+        data.nickName,
+        data.email,
+        data.password,
+        data.UsedSNS,
+        data.SNSLink,
+        Cate,
+        value
+      );
     } else {
-      console.log({
-        email: data.email,
-        password: data.password,
-        UsedSNS: data.UsedSNS,
-        SNSLink: data.SNSLink,
-        CheckCategory: Cate,
-      });
+      signIn(
+        data.nickName,
+        data.email,
+        data.password,
+        data.UsedSNS,
+        data.SNSLink,
+        Cate,
+        value
+      );
     }
   };
 

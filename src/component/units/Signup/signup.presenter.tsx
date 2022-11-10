@@ -12,6 +12,15 @@ import Image from "next/image";
 import * as SU from "./signup.styles";
 
 export default function SignupPresenter(props: any) {
+  document.addEventListener(
+    "keydown",
+    function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      }
+    },
+    true
+  );
   return (
     <SU.Wrapper>
       <Image src="/header/Logo.png" alt="ADFO로고" width="200" height="48" />
@@ -39,11 +48,23 @@ export default function SignupPresenter(props: any) {
             margin="normal"
             required
             fullWidth
+            id="nickName"
+            label="닉네임"
+            name="nickName"
+            autoComplete="nickName"
+            autoFocus
+            error={props.formState.errors.nickName?.message ? true : false}
+            helperText={props.formState.errors.nickName?.message}
+            {...props.register("nickName")}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             id="email"
             label="이메일"
             name="email"
             autoComplete="email"
-            autoFocus
             error={props.formState.errors.email?.message ? true : false}
             helperText={props.formState.errors.email?.message}
             {...props.register("email")}
