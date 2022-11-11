@@ -17,7 +17,8 @@ export default function useSignin() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        user.displayName = displayName;
+        console.log(user.displayName);
         try {
           const docRef = addDoc(collection(db, "users"), {
             email,

@@ -2,8 +2,12 @@ import LoginPresenter from "./login.presenter";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import useLogin from "../../../common/firebase/firebase.login";
+import { useRouter } from "next/router";
 
 export default function LoginContainer() {
+  const { login, isSuccess } = useLogin();
+  const router = useRouter();
   // yup & Form 을 통한 유효성 검사
   const schma = yup.object({
     email: yup
@@ -13,6 +17,7 @@ export default function LoginContainer() {
 
     password: yup
       .string()
+      .min(6, "비밀번호는 최대 6자리 이상입니다.")
       .max(10, "비밀번호는 최대 10자리 이내로 입력해주세요")
       .required("비밀번호는 필수 입력사항입니다.")
       .matches(
@@ -33,6 +38,8 @@ export default function LoginContainer() {
     //   email: data.get("email"),
     //   password: data.get("password"),
     // });
+    login(event.email, event.password);
+    isSuccess ? alert("로그인 실패") : router.push("/main");
     console.log({
       email: event.email,
       password: event.password,
