@@ -1,9 +1,11 @@
 import Image from "next/image";
 import HeaderLoginBtn from "../../btns/header/header.loginBtn";
+import HeaderLogoutBtn from "../../btns/header/header.logoutBtn";
 import HeaderSignInBtn from "../../btns/header/header.signinBtn";
 import * as S from "./header.styles";
+import { IPropsHeader } from "./header.types";
 
-export default function HeaderPresenter(props: any) {
+export default function HeaderPresenter(props: IPropsHeader) {
   return (
     <S.Outline>
       <S.Logo>
@@ -16,10 +18,17 @@ export default function HeaderPresenter(props: any) {
           onClick={props.onClickMoveToPage}
         ></Image>
       </S.Logo>
-      <S.HeaderBtnWrapper>
-        <HeaderLoginBtn id={"/login"} onClick={props.onClickMoveToPage} />
-        <HeaderSignInBtn id={"/signup"} onClick={props.onClickMoveToPage} />
-      </S.HeaderBtnWrapper>
+      {props.accessToken === "" ? (
+        <S.HeaderBtnWrapper>
+          <HeaderLoginBtn id={"/login"} onClick={props.onClickMoveToPage} />
+          <HeaderSignInBtn id={"/signup"} onClick={props.onClickMoveToPage} />
+        </S.HeaderBtnWrapper>
+      ) : (
+        <S.HeaderBtnWrapper>
+          <S.UserInfo>{props.UserName}</S.UserInfo>
+          <HeaderLogoutBtn onClick={props.onClickLogOut} />
+        </S.HeaderBtnWrapper>
+      )}
     </S.Outline>
   );
 }

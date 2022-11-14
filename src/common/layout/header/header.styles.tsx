@@ -23,3 +23,5 @@ export const HeaderBtnWrapper = styled.div`
   border: 1px solid #fff;
   width: 300px;
 `;
+
+export const UserInfo = styled.div``;
