@@ -32,12 +32,7 @@ export default function LoginContainer() {
   });
 
   const onLoginClick = (event: any) => {
-    // event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
+    const data = new FormData(event.currentTarget);
     login(event.email, event.password);
     isSuccess ? alert("로그인 실패") : router.push("/main");
     console.log({

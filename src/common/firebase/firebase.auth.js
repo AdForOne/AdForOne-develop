@@ -1,4 +1,8 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore/lite";
 import { auth, db } from "./firebase.config";
 
@@ -14,11 +18,19 @@ export default function useSignin() {
     value
   ) => {
     createUserWithEmailAndPassword(auth, email, password, displayName)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
-        user.displayName = displayName;
-        console.log(user.displayName);
+        await updateProfile(auth.currentUser, {
+          displayName,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
         try {
           const docRef = addDoc(collection(db, "users"), {
             email,
@@ -27,7 +39,7 @@ export default function useSignin() {
             CheckCategory,
             value,
           });
-          console.log("Document written with ID: ", docRef.id);
+          console.log("Document written with ID: ", docRef.email);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
