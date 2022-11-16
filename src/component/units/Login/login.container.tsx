@@ -34,11 +34,6 @@ export default function LoginContainer() {
   const onLoginClick = (event: any) => {
     const data = new FormData(event.currentTarget);
     login(event.email, event.password);
-    isSuccess ? alert("로그인 실패") : router.push("/main");
-    console.log({
-      email: event.email,
-      password: event.password,
-    });
   };
 
   return (
