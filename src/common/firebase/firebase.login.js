@@ -1,5 +1,7 @@
 import {
+  browserSessionPersistence,
   onAuthStateChanged,
+  setPersistence,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -21,25 +23,28 @@ export default function useLogin() {
         // Signed in
         const user = userCredential.user;
         const displayName = user.displayName;
-        console.log(displayName);
-        setAccessToken(user.accessToken);
-        setUserName(displayName);
+        const refreshToken = user.refreshToken;
+        console.log(refreshToken);
+        // setAccessToken(user.accessToken);
+        sessionStorage.setItem("Token", user.accessToken);
+        sessionStorage.setItem("displayName", user.displayName);
+        // setUserName(displayName);
         setIsSuccess(true);
-        // ...
         onAuthStateChanged(auth, (user) => {
           if (user) {
             const uid = user.uid;
-            console.log(uid);
             // ...
           } else {
             alert("로그아웃 되었습니다.");
           }
         });
+        router.push("/main");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setIsSuccess(false);
+        alert("존재하지 않는 아이디 입니다.");
       });
   };
 

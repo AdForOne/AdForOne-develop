@@ -18,15 +18,17 @@ export default function HeaderPresenter(props: IPropsHeader) {
           onClick={props.onClickMoveToPage}
         ></Image>
       </S.Logo>
-      {props.accessToken === "" ? (
+      {props.isLogin ? (
         <S.HeaderBtnWrapper>
-          <HeaderLoginBtn id={"/login"} onClick={props.onClickMoveToPage} />
-          <HeaderSignInBtn id={"/signup"} onClick={props.onClickMoveToPage} />
+          <S.UserInfo id="/myPage/edit" onClick={props.onClickMoveToPage}>
+            {props.UserName}님의 마이페이지
+          </S.UserInfo>
+          <HeaderLogoutBtn onClick={props.onClickLogOut} />
         </S.HeaderBtnWrapper>
       ) : (
         <S.HeaderBtnWrapper>
-          <S.UserInfo>{props.UserName}</S.UserInfo>
-          <HeaderLogoutBtn onClick={props.onClickLogOut} />
+          <HeaderLoginBtn id={"/login"} onClick={props.onClickMoveToPage} />
+          <HeaderSignInBtn id={"/signup"} onClick={props.onClickMoveToPage} />
         </S.HeaderBtnWrapper>
       )}
     </S.Outline>
