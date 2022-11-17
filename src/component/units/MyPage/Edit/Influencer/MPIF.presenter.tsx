@@ -1,12 +1,12 @@
 import Image from "next/image";
-import MPChangeBtn from "../../../../common/btns/MPAD/MP.ChangeBtn";
-import MPIFChatBtn from "../../../../common/btns/MPIF/MPIF.ChatBtn";
-import Tags from "../../../../common/tags/MPIF.Tags";
+import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
+import MPIFChatBtn from "../../../../../common/btns/MPIF/MPIF.ChatBtn";
+import Tags from "../../../../../common/tags/MPIF.Tags";
 import * as S from "./MPIF.styles";
-import MPIFPriceInputShort from "../../../../common/inputs/MP/MPIF.PriceShort";
-import MPIFLinkInput from "../../../../common/inputs/MP/MPIF.Input";
-import MPIFQuill from "../../../../common/quill/mpif/mpif.quill";
-import MPIFPriceInputLong from "../../../../common/inputs/MP/MPIF.PriceLong";
+import MPIFPriceInputShort from "../../../../../common/inputs/MP/MPIF.PriceShort";
+import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
+import MPIFQuill from "../../../../../common/quill/mpif/mpif.quill";
+import MPIFPriceInputLong from "../../../../../common/inputs/MP/MPIF.PriceLong";
 
 export default function MyPageIFPresenter() {
   return (

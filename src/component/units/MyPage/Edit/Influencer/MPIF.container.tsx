@@ -1,0 +1,12 @@
+import { useEffect } from "react";
+import MyPageIFPresenter from "./MPIF.presenter";
+
+export default function MyPageIFContainer() {
+  // const UserInfo = {
+  //   UsedSNS: sessionStorage.getItem("userUsedSNS"),
+  //   UserSNSLink: sessionStorage.getItem("userSNSLink"),
+  //   UserCheckedCategory: sessionStorage.getItem("userCheckCategory"),
+  //   UserDisplayName: sessionStorage.getItem("displayName"),
+  // };
+  return <MyPageIFPresenter />;
+}

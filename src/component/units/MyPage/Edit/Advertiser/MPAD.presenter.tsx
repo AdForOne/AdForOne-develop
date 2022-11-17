@@ -1,10 +1,10 @@
 import Image from "next/image";
-import MPChangeBtn from "../../../../common/btns/MPAD/MP.ChangeBtn";
-import MPADChatBtn from "../../../../common/btns/MPAD/MPAD.ChatBtn";
-import MPADLinkBtn from "../../../../common/btns/MPAD/MPAD.LinkBtn";
-import MPADLinkInput from "../../../../common/inputs/MP/MPAD.LinkInput";
+import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
+import MPADChatBtn from "../../../../../common/btns/MPAD/MPAD.ChatBtn";
+import MPADLinkBtn from "../../../../../common/btns/MPAD/MPAD.LinkBtn";
+import MPADLinkInput from "../../../../../common/inputs/MP/MPAD.LinkInput";
 import CloseIcon from "@mui/icons-material/Close";
-import Tags from "../../../../common/tags/MPAD.Tags";
+import Tags from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPAD.styles";
 import { IPropsMPAD } from "./MPAD.types";
 

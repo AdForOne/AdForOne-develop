@@ -1,9 +1,5 @@
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore/lite";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore/lite";
 import { auth, db } from "./firebase.config";
 
 export default function useSignin() {
@@ -32,17 +28,17 @@ export default function useSignin() {
             console.log(error.message);
           });
         try {
-          const docRef = addDoc(collection(db, "users"), {
+          await setDoc(doc(db, "users", email), {
             email,
             UsedSNS,
             SNSLink,
             CheckCategory,
             value,
           });
-          console.log("Document written with ID: ", docRef.email);
         } catch (e) {
-          console.error("Error adding document: ", e);
+          console.log(e.message);
         }
+
         // ...
       })
       .catch((error) => {

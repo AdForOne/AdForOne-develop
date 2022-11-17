@@ -16,6 +16,7 @@ export default function HeaderContainer() {
   const onClickMoveToPage = (event: MouseEvent<HTMLImageElement>) => {
     const href = event.currentTarget.id;
     router.push(href);
+    console.log(sessionStorage.getItem("UserInfo"));
   };
 
   const onClickLogOut = () => {
@@ -24,6 +25,7 @@ export default function HeaderContainer() {
         // setAccessToken("");
         sessionStorage.clear();
         router.push("/login");
+        alert("로그아웃 되었습니다.");
       })
       .catch((error) => {
         console.log(error.message);
@@ -35,15 +37,6 @@ export default function HeaderContainer() {
       const uid = user.uid;
       setIsLogin(true);
       setUserName(sessionStorage.getItem("displayName"));
-      const docRef = doc(db, "cities", "SF");
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
     } else {
       setIsLogin(false);
     }
