@@ -7,8 +7,9 @@ import MPIFPriceInputShort from "../../../../../common/inputs/MP/MPIF.PriceShort
 import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
 import MPIFQuill from "../../../../../common/quill/mpif/mpif.quill";
 import MPIFPriceInputLong from "../../../../../common/inputs/MP/MPIF.PriceLong";
+import { IPropsMPIF } from "./MPIF.types";
 
-export default function MyPageIFPresenter() {
+export default function MyPageIFPresenter(props: IPropsMPIF) {
   return (
     <S.Outline>
       <S.Header>
@@ -22,25 +23,29 @@ export default function MyPageIFPresenter() {
         </S.HeaderImg>
         <S.HeaderInfo>
           <S.InfoHead>
-            <S.InfoText>사업체 이름, 상품이름</S.InfoText>
+            <S.InfoText>
+              {props.UserInfo.UserDisplayName}님의 마이페이지
+            </S.InfoText>
             <MPIFChatBtn />
           </S.InfoHead>
           <S.DivideLine></S.DivideLine>
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ</S.InfoText>
+                <S.InfoText>이메일 : {props.UserInfo.UserEmail}</S.InfoText>
                 <MPChangeBtn />
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags></Tags>
+                  <Tags
+                    UserCateGory={props.UserInfo.UserCheckedCategory}
+                  ></Tags>
                 </S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>업체종류 : ㅁㅁㅁㅁ</S.InfoText>
+                <S.InfoText>SNS종류 : {props.UserInfo.UsedSNS}</S.InfoText>
                 <MPChangeBtn></MPChangeBtn>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
