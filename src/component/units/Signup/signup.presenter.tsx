@@ -9,18 +9,21 @@ import {
 } from "@mui/material";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import * as SU from "./signup.styles";
 
 export default function SignupPresenter(props: any) {
-  document.addEventListener(
-    "keydown",
-    function (event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-      }
-    },
-    true
-  );
+  useEffect(() => {
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+        }
+      },
+      true
+    );
+  });
   return (
     <SU.Wrapper>
       <Image src="/header/Logo.png" alt="ADFO로고" width="200" height="48" />
