@@ -1,3 +1,6 @@
+import { doc, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../../../../common/firebase/firebase.config";
 import ChatListUI from "./chatlist.presenter";
 
 const User = [
@@ -13,9 +16,36 @@ const User = [
 ];
 
 export default function ChatListContainer() {
+  const [chats, setChats] = useState([]);
+
+  // 계속 데이터를 넣는 것이 아닌 실시간 데이터를 받아서 넣는 것
+  useEffect(
+    () => {
+      const getChats = () => {
+        const unsub = onSnapshot(
+          doc(db, "userChats", "전역변수 uid"),
+          (doc) => {
+            setChats(doc.data());
+          }
+        );
+        return () => {
+          unsub();
+        };
+      };
+
+      // 전역변수.uid && getChats();
+    },
+    [
+      /*전역변수 uid*/
+    ]
+  );
+
+  // 채팅목록에서 채팅 클릭시 그 채팅방 기록을 가져오기 위해서 새롭게 전역변수 설정
+  const onClickSelect = () => {};
+
   return (
     <>
-      <ChatListUI User={User} />
+      <ChatListUI User={User} onClickSelect={onClickSelect} />
     </>
   );
 }

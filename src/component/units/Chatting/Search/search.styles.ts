@@ -41,3 +41,9 @@ export const UsersImg = styled.img`
 `;
 
 export const UserChatInfo = styled.div``;
+
+export const UserInfoErr = styled.p`
+  color: white;
+  font-weight: 600;
+  padding: 10px;
+`;
