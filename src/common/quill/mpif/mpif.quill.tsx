@@ -1,8 +1,14 @@
 import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 import "react-quill/dist/quill.snow.css";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-export default function MPIFQuill() {
+interface IPropsQuill {
+  register: UseFormRegister<FieldValues>;
+  registerName: string;
+}
+
+export default function MPIFQuill(props: IPropsQuill) {
   const QuillWrapper = dynamic(() => import("react-quill"), {
     ssr: false,
     loading: () => <p>Loading ...</p>,
@@ -12,5 +18,5 @@ export default function MPIFQuill() {
     height: 350px;
   `;
 
-  return <ServiceText></ServiceText>;
+  return <QuillWrapper {...props.register(props.registerName)}></QuillWrapper>;
 }

@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import MyPageIFPresenter from "./MPIF.presenter";
 
 export default function MyPageIFContainer() {
@@ -9,5 +10,14 @@ export default function MyPageIFContainer() {
     UserDisplayName: sessionStorage.getItem("displayName"),
   };
 
-  return <MyPageIFPresenter UserInfo={UserInfo} />;
+  const { handleSubmit, register } = useForm();
+  const onClickSavePage = (data: string) => {};
+  return (
+    <MyPageIFPresenter
+      UserInfo={UserInfo}
+      handleSubmit={handleSubmit}
+      register={register}
+      onClickSavePage={onClickSavePage}
+    />
+  );
 }
