@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import MyPageIFPresenter from "./MPIF.presenter";
 
 export default function MyPageIFContainer() {

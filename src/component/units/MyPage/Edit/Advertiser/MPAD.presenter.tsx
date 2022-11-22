@@ -11,7 +11,7 @@ import { IPropsMPAD } from "./MPAD.types";
 export default function MyPageADPresenter(props: IPropsMPAD) {
   return (
     <S.Outline>
-      <S.PageName>ㅁㅁㅁ님의 마이페이지</S.PageName>
+      <S.PageName>{props.UserInfo?.UserDisplayName}님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
           <Image
@@ -30,19 +30,13 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ</S.InfoText>
+                <S.InfoText>이메일 : {props.UserInfo?.UserEmail}</S.InfoText>
                 <MPChangeBtn />
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags></Tags>
+                  <Tags UserCateGory={props.UserInfo?.UsedSNS}></Tags>
                 </S.InfoText>
-              </S.InfoTextWrapper>
-            </S.InfoSectionWrapper>
-            <S.InfoSectionWrapper>
-              <S.InfoTextWrapper>
-                <S.InfoText>업체종류 : ㅁㅁㅁㅁ</S.InfoText>
-                <MPChangeBtn></MPChangeBtn>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
           </S.InfoSection>

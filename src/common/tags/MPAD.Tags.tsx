@@ -2,14 +2,25 @@ import * as React from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+interface IPropsTags {
+  UserCateGory: string | null | undefined;
+}
+export default function Tags(props: IPropsTags) {
+  const CategoryTags = [
+    { label: "Instargram" },
+    { label: "FaceBook" },
+    { label: "Youtube" },
+    { label: "TwitchTv" },
+    { label: "AfricaTv" },
+  ];
 
-export default function Tags() {
   return (
     <Stack spacing={3} sx={{ width: 370, height: 35, marginTop: -3 }}>
       <Autocomplete
         multiple
         id="tags-standard"
         options={CategoryTags}
+        defaultValue={[{ label: props.UserCateGory }]}
         getOptionLabel={(option) => option.label}
         renderInput={(params) => (
           <TextField
@@ -25,10 +36,3 @@ export default function Tags() {
 }
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const CategoryTags = [
-  { label: "Instargram" },
-  { label: "FaceBook" },
-  { label: "Youtube" },
-  { label: "TwitchTv" },
-  { label: "AfricaTv" },
-];

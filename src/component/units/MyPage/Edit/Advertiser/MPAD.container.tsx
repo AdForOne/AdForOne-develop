@@ -1,8 +1,18 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useIsSsr } from "../../../../../common/hooks/useSrr";
 import MyPageADPresenter from "./MPAD.presenter";
 
 export default function MyPageADContainer() {
+  const isSrr = useIsSsr();
   const [link, setLink] = useState([0]);
+  if (isSrr) return null;
+  const UserInfo = {
+    UserEmail: sessionStorage.getItem("userEmail"),
+    UsedSNS: sessionStorage.getItem("userUsedSNS"),
+    UserSNSLink: sessionStorage.getItem("userSNSLink"),
+    UserCheckedCategory: sessionStorage.getItem("userCheckCategory"),
+    UserDisplayName: sessionStorage.getItem("displayName"),
+  };
 
   const onClickMakeInputs = () => {
     const countArr = [...link];
@@ -24,6 +34,7 @@ export default function MyPageADContainer() {
       onClickDeleteInputs={onClickDeleteInputs}
       Link={link}
       onClickMakeInputs={onClickMakeInputs}
+      UserInfo={UserInfo}
     />
   );
 }
