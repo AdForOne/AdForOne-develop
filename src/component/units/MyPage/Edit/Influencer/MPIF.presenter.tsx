@@ -8,10 +8,11 @@ import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
 import MPIFQuill from "../../../../../common/quill/mpif/mpif.quill";
 import MPIFPriceInputLong from "../../../../../common/inputs/MP/MPIF.PriceLong";
 import { IPropsMPIF } from "./MPIF.types";
+import MPIFChangeInputs from "../../../../../common/inputs/MP/MPIF.ChangeInputs";
 
 export default function MyPageIFPresenter(props: IPropsMPIF) {
   return (
-    <S.Outline>
+    <S.Outline onSubmit={props.handleSubmit(props.onClickSavePage)}>
       <S.Header>
         <S.HeaderImg>
           <Image
@@ -32,7 +33,12 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : {props.UserInfo.UserEmail}</S.InfoText>
+                <S.InfoText>
+                  <MPIFChangeInputs
+                    text={"이메일을 입력 해 주세요"}
+                    data={props.UserInfo.UserEmail}
+                  />
+                </S.InfoText>
                 <MPChangeBtn />
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
@@ -45,7 +51,12 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             </S.InfoSectionWrapper>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>SNS종류 : {props.UserInfo.UsedSNS}</S.InfoText>
+                <S.InfoText>
+                  <MPIFChangeInputs
+                    text={"SNS종류를 입력 해 주세요"}
+                    data={props.UserInfo.UsedSNS}
+                  />
+                </S.InfoText>
                 <MPChangeBtn></MPChangeBtn>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
@@ -56,12 +67,12 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
       <S.DivideLine></S.DivideLine>
       <S.Section>
         <S.SectionInfo>
-          <MPIFLinkInput />
+          <MPIFLinkInput register={props.register} registerName="Link" />
         </S.SectionInfo>
         <S.DivideLine></S.DivideLine>
         <h1>서비스 설명</h1>
         <S.SectionService>
-          <MPIFQuill />
+          <MPIFQuill register={props.register} registerName="ServiceMain" />
         </S.SectionService>
       </S.Section>
       <S.DivideLine></S.DivideLine>
@@ -103,6 +114,9 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             <MPIFPriceInputLong label="서비스 한 줄 설명" />
           </S.PriceInfo>
         </S.PriceBox>
+        <button style={{ width: 1143 }} type="submit">
+          변경사항 저장
+        </button>
       </S.PriceWrapper>
     </S.Outline>
   );

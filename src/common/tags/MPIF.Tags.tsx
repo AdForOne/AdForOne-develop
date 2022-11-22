@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
 interface IPropsTags {
-  UserCateGory: string;
+  UserCateGory: string | null;
 }
 
 export default function Tags(props: IPropsTags) {

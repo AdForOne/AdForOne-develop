@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Outline = styled.div`
+export const Outline = styled.form`
   width: 100%;
   padding: 30px;
   background-color: #fff;
@@ -54,12 +54,14 @@ export const InfoTextWrapper = styled.div`
   align-items: center;
 `;
 export const InfoText = styled.div`
+  width: 65%;
   font-size: 19px;
   font-weight: 700;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
+export const InfoInputs = styled.input``;
 
 // 섹션 스타일
 export const Section = styled.section`
