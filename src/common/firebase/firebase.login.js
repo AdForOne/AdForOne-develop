@@ -25,6 +25,7 @@ export default function useLogin() {
         const user = userCredential.user;
         sessionStorage.setItem("Token", user.accessToken);
         sessionStorage.setItem("displayName", user.displayName);
+        sessionStorage.setItem("uid", user.uid);
         setIsSuccess(true);
         // onAuthStateChanged(auth, (user) => {
         //   if (user) {
