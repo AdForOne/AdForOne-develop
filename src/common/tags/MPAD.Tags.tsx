@@ -20,7 +20,6 @@ export default function Tags(props: IPropsTags) {
         multiple
         id="tags-standard"
         options={CategoryTags}
-        defaultValue={[{ label: props.UserCateGory }]}
         getOptionLabel={(option) => option.label}
         renderInput={(params) => (
           <TextField
