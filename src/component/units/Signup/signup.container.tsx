@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 // useSignIn 훅
 import useSignIn from "../../../common/firebase/firebase.auth";
+import { useRouter } from "next/router";
 const schma = yup.object({
   nickName: yup.string().required("닉네임을 입력 해 주세요"),
   email: yup
@@ -64,6 +65,8 @@ export default function SignupContainer() {
     mode: "onChange",
   });
 
+  const router = useRouter();
+
   const onClickSignUp = (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
     if (value !== "인플루언서") {
@@ -87,6 +90,7 @@ export default function SignupContainer() {
         value
       );
     }
+    router.push("/login");
   };
 
   return (
