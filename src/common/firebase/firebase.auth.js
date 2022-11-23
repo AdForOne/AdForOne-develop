@@ -3,7 +3,7 @@ import { doc, setDoc } from "firebase/firestore/lite";
 import { auth, db } from "./firebase.config";
 
 export default function useSignin() {
-  /** email, password, UsedSNS, SNSLink, CheckCategory */
+  /** displayName, email, password, UsedSNS, SNSLink, CheckCategory, value */
   const signIn = (
     displayName,
     email,
