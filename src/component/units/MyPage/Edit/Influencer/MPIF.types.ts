@@ -1,5 +1,6 @@
 import {
   FieldValues,
+  SubmitHandler,
   UseFormHandleSubmit,
   UseFormRegister,
 } from "react-hook-form";
@@ -20,5 +21,6 @@ export interface IPropsMPIF {
   UserInfo: IUserInfo;
   handleSubmit: UseFormHandleSubmit<FieldValues>;
   register: UseFormRegister<FieldValues>;
-  onClickSavePage: (data: string) => void;
+  onClickSavePage: SubmitHandler<FieldValues>;
+  onChangeContents: (value: string) => void;
 }

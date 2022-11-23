@@ -6,6 +6,7 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 interface IPropsQuill {
   register: UseFormRegister<FieldValues>;
   registerName: string;
+  onChange: (value: string) => void;
 }
 
 export default function MPIFQuill(props: IPropsQuill) {
@@ -18,5 +19,5 @@ export default function MPIFQuill(props: IPropsQuill) {
     height: 350px;
   `;
 
-  return <QuillWrapper {...props.register(props.registerName)}></QuillWrapper>;
+  return <ServiceText onChange={props.onChange}></ServiceText>;
 }

@@ -72,7 +72,11 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
         <S.DivideLine></S.DivideLine>
         <h1>서비스 설명</h1>
         <S.SectionService>
-          <MPIFQuill register={props.register} registerName="ServiceMain" />
+          <MPIFQuill
+            register={props.register}
+            registerName="ServiceMain"
+            onChange={props.onChangeContents}
+          />
         </S.SectionService>
       </S.Section>
       <S.DivideLine></S.DivideLine>
@@ -98,7 +102,7 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             height="150"
           ></Image>
           <S.PriceInfo>
-            <MPIFPriceInputShort label="베이직(원)" />
+            <MPIFPriceInputShort label="익스퍼트(원)" />
             <MPIFPriceInputLong label="서비스 한 줄 설명" />
           </S.PriceInfo>
         </S.PriceBox>
@@ -110,7 +114,7 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             height="150"
           ></Image>
           <S.PriceInfo>
-            <MPIFPriceInputShort label="베이직(원)" />
+            <MPIFPriceInputShort label="프로(원)" />
             <MPIFPriceInputLong label="서비스 한 줄 설명" />
           </S.PriceInfo>
         </S.PriceBox>

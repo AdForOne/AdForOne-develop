@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import Image from "next/image";
 import MPIFPriceCard from "../../../../../common/card/MPIF.PriceCard";
 import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
@@ -20,13 +21,23 @@ export default function MPIFReadPresenter(props: any) {
         </S.HeaderImg>
         <S.HeaderInfo>
           <S.InfoHead>
-            <S.InfoText>사업체 이름, 상품이름</S.InfoText>
+            <S.InfoText
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize("사업체 이름, 상품이름"),
+              }}
+            ></S.InfoText>
           </S.InfoHead>
           <S.DivideLine></S.DivideLine>
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ</S.InfoText>
+                <S.InfoText
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      "이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ"
+                    ),
+                  }}
+                ></S.InfoText>
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
@@ -36,7 +47,11 @@ export default function MPIFReadPresenter(props: any) {
             </S.InfoSectionWrapper>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>업체종류 : ㅁㅁㅁㅁ</S.InfoText>
+                <S.InfoText
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize("업체종류 : ㅁㅁㅁㅁ"),
+                  }}
+                ></S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
           </S.InfoSection>
@@ -46,16 +61,20 @@ export default function MPIFReadPresenter(props: any) {
       <S.Section>
         <S.SectionInfo>
           <h1>간단 소개글</h1>
-          <S.SectionSimpleText>
-            Consequat pariatur est esse velit. Ipsum nostrud fugiat amet commodo
+          <S.SectionSimpleText
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(
+                `Consequat pariatur est esse velit. Ipsum nostrud fugiat amet commodo
             ea quis mollit nulla. Ipsum aliqua eu adipisicing occaecat
             incididunt deserunt nulla nostrud ipsum proident in pariatur
             consequat. Aliqua occaecat aliquip anim eu voluptate consectetur
             reprehenderit esse magna et fugiat excepteur adipisicing.
             Exercitation ea incididunt reprehenderit ex aute magna dolore. Anim
             tempor eiusmod incididunt ullamco nisi duis minim quis nulla
-            incididunt eu.
-          </S.SectionSimpleText>
+            incididunt eu`
+              ),
+            }}
+          ></S.SectionSimpleText>
         </S.SectionInfo>
         <S.DivideLine></S.DivideLine>
         <h1>서비스 설명</h1>
