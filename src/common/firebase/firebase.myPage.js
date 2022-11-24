@@ -14,5 +14,5 @@ export default function usePage() {
     }
   };
 
-  return { createMyPage, fetchPage };
+  return { createMyPage };
 }
