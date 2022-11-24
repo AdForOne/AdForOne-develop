@@ -34,6 +34,11 @@ export default function useSignin() {
             SNSLink,
             CheckCategory,
             value,
+            uid: user.uid,
+          });
+          // 유저채팅정보
+          await setDoc(doc(db, "userChats", user.uid), {
+            // userChatInfo,
           });
         } catch (e) {
           console.log(e.message);

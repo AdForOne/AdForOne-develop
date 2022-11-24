@@ -12,16 +12,13 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-import { auth, db } from "../../../../common/firebase/firebase.config";
-import { useRecoilState } from "recoil";
-import { UserDisplayName } from "../../../../common/recoil/user";
-import { onAuthStateChanged } from "firebase/auth";
+import { db } from "../../../../common/firebase/firebase.config";
 
 // 파이어베이스 DB가져오기
 
 export default function SearchContainer() {
   const [userEmail, setUserEmail] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<null | any>(null);
   const [err, setErr] = useState(false);
   // 로그인이 되있는지 확인 및 전역변수를 통해 유저정보 가져오기?
   // const [LoginUser, setLoginUser] = useRecoil????
@@ -30,13 +27,20 @@ export default function SearchContainer() {
     // firebase query문
     const q = query(collection(db, "users"), where("email", "==", userEmail));
 
+    // 코드 최적화 필요 11/23
     try {
       const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc: any) => {
-        // 사용자가 있다면 doc 데이터를 설정
-        // console.log(doc.data());
-        setUser(doc.data());
-      });
+      // 유저가 없다면
+      if (querySnapshot.docs.length === 0) {
+        setErr(true);
+        setUser(null);
+      } else {
+        querySnapshot.forEach((doc: any) => {
+          // 사용자가 있다면 doc 데이터를 설정
+          setUser(doc.data());
+          setErr(false);
+        });
+      }
     } catch (err) {
       setErr(true);
     }
@@ -44,7 +48,6 @@ export default function SearchContainer() {
 
   const handleKey = (e: any) => {
     e.code === "Enter" && handleSearch();
-    // 엔터를 치면 handleSearch 함수 발생
   };
 
   const onClickSelect = async () => {
@@ -52,15 +55,44 @@ export default function SearchContainer() {
     // ex) 본인의 ID, 상대방 ID를 가져와서 채팅모음에 저장되어 있어야함
     // 그후, 메세지 배열에 메세지 세부정보를 포함
     // 1. 그룹(채팅기록)이 있는지 체크  if not -> 새로운 그룹을 Create
-    console.log(user, "유저");
-    // try {
-    //   const ref = doc(db, "users");
-    //   const docSnap = await getDoc(ref);
-    //   console.log(ref);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    // 2. 사용자 채팅 생성
+    const ChatID =
+      user.uid > sessionStorage.uid
+        ? sessionStorage.uid + user.uid
+        : user.uid + sessionStorage.uid;
+    try {
+      const res = await getDoc(doc(db, "chats", ChatID));
+      // console.log(!res.exists());
+      if (!res.exists()) {
+        // 2. 사용자 채팅 생성 res 데이터가 없다면
+        // chats 컬렉션 생성, messages 라는 객체를 담아서
+        await setDoc(doc(db, "chats", ChatID), { messages: [] });
+        // userChats은 회원가입하면서 만들어진 컬렉션 (채팅을 담을 컬렉션)
+        // userChats컬렉션을 updateDoc 으로 수정
+
+        // updateDoc 오류
+        await updateDoc(doc(db, "userChats", sessionStorage.uid), {
+          [ChatID + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+          },
+          [ChatID + ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(db, "userChats", user.uid), {
+          [ChatID + ".userInfo"]: {
+            uid: sessionStorage.uid,
+            displayName: sessionStorage.displayName,
+          },
+          [ChatID + ".date"]: serverTimestamp(),
+        });
+      } else {
+        console.log(res);
+      }
+    } catch (error: any) {
+      console.log("에러", error.message);
+    }
+    setUser(null);
+    setUserEmail("");
   };
 
   return (

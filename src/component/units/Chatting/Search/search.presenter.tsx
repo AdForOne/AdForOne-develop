@@ -13,10 +13,8 @@ export default function SearchUI(props: any) {
           // 간단한 온체인지함수
         />
       </SC.SearchBox>
-
-      {props.user == null ? (
-        <SC.UserInfoErr>유저를 찾을 수 없습니다!</SC.UserInfoErr>
-      ) : (
+      {props.err && <SC.UserInfoErr>유저를 찾을 수 없습니다!</SC.UserInfoErr>}
+      {props.user && (
         <SC.UserChatWrapper onClick={props.onClickSelect}>
           {/* 온클릭 함수 작성필요. 유저 정보가 Search창에 나올시 채팅목록을 불러와야함 */}
           <SC.UsersImg src="https://source.unsplash.com/random" alt="" />
