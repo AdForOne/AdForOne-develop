@@ -37,7 +37,6 @@ export default function SearchContainer() {
       } else {
         querySnapshot.forEach((doc: any) => {
           // 사용자가 있다면 doc 데이터를 설정
-          console.log(doc.data());
           setUser(doc.data());
           setErr(false);
         });
@@ -85,8 +84,6 @@ export default function SearchContainer() {
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
-      } else {
-        console.log(res);
       }
     } catch (error: any) {
       console.log("에러", error.message);
