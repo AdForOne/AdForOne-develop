@@ -35,6 +35,7 @@ export default function useSignin() {
             CheckCategory,
             value,
             uid: user.uid,
+            displayName: user.displayName,
           });
           // 유저채팅정보
           await setDoc(doc(db, "userChats", user.uid), {

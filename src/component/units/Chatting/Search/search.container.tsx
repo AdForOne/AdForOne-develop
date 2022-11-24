@@ -37,6 +37,7 @@ export default function SearchContainer() {
       } else {
         querySnapshot.forEach((doc: any) => {
           // 사용자가 있다면 doc 데이터를 설정
+          console.log(doc.data());
           setUser(doc.data());
           setErr(false);
         });
@@ -61,7 +62,7 @@ export default function SearchContainer() {
         : user.uid + sessionStorage.uid;
     try {
       const res = await getDoc(doc(db, "chats", ChatID));
-      // console.log(!res.exists());
+
       if (!res.exists()) {
         // 2. 사용자 채팅 생성 res 데이터가 없다면
         // chats 컬렉션 생성, messages 라는 객체를 담아서
@@ -73,15 +74,14 @@ export default function SearchContainer() {
         await updateDoc(doc(db, "userChats", sessionStorage.uid), {
           [ChatID + ".userInfo"]: {
             uid: user.uid,
-            displayName: user.displayName,
+            email: user.email,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
-
         await updateDoc(doc(db, "userChats", user.uid), {
           [ChatID + ".userInfo"]: {
             uid: sessionStorage.uid,
-            displayName: sessionStorage.displayName,
+            email: sessionStorage.userEmail,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
