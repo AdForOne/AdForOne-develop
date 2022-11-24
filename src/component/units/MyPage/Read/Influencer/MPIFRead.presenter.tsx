@@ -63,30 +63,17 @@ export default function MPIFReadPresenter(props: any) {
           <h1>간단 소개글</h1>
           <S.SectionSimpleText
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(
-                `Consequat pariatur est esse velit. Ipsum nostrud fugiat amet commodo
-            ea quis mollit nulla. Ipsum aliqua eu adipisicing occaecat
-            incididunt deserunt nulla nostrud ipsum proident in pariatur
-            consequat. Aliqua occaecat aliquip anim eu voluptate consectetur
-            reprehenderit esse magna et fugiat excepteur adipisicing.
-            Exercitation ea incididunt reprehenderit ex aute magna dolore. Anim
-            tempor eiusmod incididunt ullamco nisi duis minim quis nulla
-            incididunt eu`
-              ),
+              __html: DOMPurify.sanitize(props.Link),
             }}
           ></S.SectionSimpleText>
         </S.SectionInfo>
         <S.DivideLine></S.DivideLine>
         <h1>서비스 설명</h1>
-        <S.SectionService>
-          Veniam elit proident ex qui laborum consequat veniam sint.Veniam elit
-          proident ex qui laborum consequat veniam sint.Veniam elit proident ex
-          qui laborum consequat veniam sint.Veniam elit proident ex qui laborum
-          consequat veniam sint.Veniam elit proident ex qui laborum consequat
-          veniam sint.Veniam elit proident ex qui laborum consequat veniam
-          sint.Veniam elit proident ex qui laborum consequat veniam sint.Veniam
-          elit proident ex qui laborum consequat veniam sint.
-        </S.SectionService>
+        <S.SectionService
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props.ServiceMain),
+          }}
+        ></S.SectionService>
       </S.Section>
       <S.DivideLine></S.DivideLine>
       <h1>가격정보</h1>

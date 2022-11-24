@@ -1,10 +1,4 @@
-import {
-  browserSessionPersistence,
-  onAuthStateChanged,
-  setPersistence,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,8 +10,6 @@ import { auth, db } from "./firebase.config";
 export default function useLogin() {
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState();
-  const [accessToken, setAccessToken] = useRecoilState(AccessToken);
-  const [UserName, setUserName] = useRecoilState(UserDisplayName);
   const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -27,14 +19,6 @@ export default function useLogin() {
         sessionStorage.setItem("displayName", user.displayName);
         sessionStorage.setItem("uid", user.uid);
         setIsSuccess(true);
-        // onAuthStateChanged(auth, (user) => {
-        //   if (user) {
-        //     const uid = user.uid;
-        //     // ...
-        //   } else {
-        //     alert("로그아웃 되었습니다.");
-        //   }
-        // });
         router.push("/main");
         const docRef = doc(db, "users", user.email);
         const docSnap = await getDoc(docRef);

@@ -1,28 +1,18 @@
-import { addDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
-import { auth, db } from "./firebase.config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
+import { db } from "./firebase.config";
 
-export default function useMyPage() {
+export default function usePage() {
   const createMyPage = async (email, Link, ServiceMain) => {
     try {
-      await addDoc(doc(db, "myPage", email), {
+      const docRef = await setDoc(doc(db, "myPage", email), {
         Link,
         ServiceMain,
       });
     } catch (e) {
-      console.log(e.message);
+      console.error("Error adding document: ", e);
     }
   };
 
-  const fetchPage = async () => {
-    const docRef = doc(db, "myPage");
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const PageInfo = docSnap.data();
-      console.log(PageInfo);
-    } else {
-      // doc.data() will be undefined in this case
-    }
-  };
-  return { createMyPage };
+  return { createMyPage, fetchPage };
 }

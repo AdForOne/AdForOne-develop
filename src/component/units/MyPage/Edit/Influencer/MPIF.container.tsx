@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-
+import usePage from "../../../../../common/firebase/firebase.myPage";
 import MyPageIFPresenter from "./MPIF.presenter";
 
 export default function MyPageIFContainer() {
   const router = useRouter();
+  const { createMyPage } = usePage();
   const UserInfo = {
     UserEmail: sessionStorage.getItem("userEmail"),
     UsedSNS: sessionStorage.getItem("userUsedSNS"),
@@ -20,9 +21,10 @@ export default function MyPageIFContainer() {
     trigger("ServiceMain");
   };
 
-  const onClickSavePage = (data: any) => {
-    console.log(data.Link, data.ServiceMain);
-    router.push(`myPage/detail/${UserInfo.UserEmail}`);
+  const onClickSavePage = async (data: any) => {
+    await createMyPage(UserInfo.UserEmail, data.Link, data.ServiceMain);
+    // 페이지 생성 완료 혹은 수정 완료시 디테일 페이지로 이동
+    await router.push(`detail/${UserInfo.UserEmail}`);
   };
   return (
     <MyPageIFPresenter
