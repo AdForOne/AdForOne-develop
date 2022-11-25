@@ -1,11 +1,11 @@
 import * as CI from "./chatinfo.styles";
 
-export default function ChatInfoUI() {
+export default function ChatInfoUI(props: any) {
   return (
     // Chat Info
     <CI.Wrapper>
-      <CI.ChatInfoTitle>회사명</CI.ChatInfoTitle>
-      <CI.ChatInfo>회사정보</CI.ChatInfo>
+      <CI.ChatInfoTitle>{props.chatUser.email}</CI.ChatInfoTitle>
+      <CI.ChatInfo>{props.chatUser.value}</CI.ChatInfo>
     </CI.Wrapper>
   );
 }
