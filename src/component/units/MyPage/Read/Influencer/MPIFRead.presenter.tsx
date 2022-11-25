@@ -2,14 +2,12 @@ import DOMPurify from "dompurify";
 import Image from "next/image";
 import MPIFPriceCard from "../../../../../common/card/MPIF.PriceCard";
 import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
-import Tags from "../../../../../common/tags/MPAD.Tags";
+import Tags from "../../../../../common/tags/MPIF.Tags";
 import * as S from "./MPIFRead.styles";
 
 export default function MPIFReadPresenter(props: any) {
   return (
     <S.Outline>
-      <button onClick={props.onClickChangePage}>변경</button>
-      <S.PageName>inf(Read)님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
           <Image
@@ -34,14 +32,16 @@ export default function MPIFReadPresenter(props: any) {
                 <S.InfoText
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
-                      "이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ"
+                      `이메일 : ${localStorage.getItem("email")}`
                     ),
                   }}
                 ></S.InfoText>
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags></Tags>
+                  <Tags
+                    UserCateGory={localStorage.getItem("CheckCategory")}
+                  ></Tags>
                 </S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
@@ -49,7 +49,9 @@ export default function MPIFReadPresenter(props: any) {
               <S.InfoTextWrapper>
                 <S.InfoText
                   dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize("업체종류 : ㅁㅁㅁㅁ"),
+                    __html: DOMPurify.sanitize(
+                      `SNS종류 : ${localStorage.getItem("UsedSNS")}`
+                    ),
                   }}
                 ></S.InfoText>
               </S.InfoTextWrapper>
@@ -63,7 +65,7 @@ export default function MPIFReadPresenter(props: any) {
           <h1>간단 소개글</h1>
           <S.SectionSimpleText
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(props.Link),
+              __html: DOMPurify.sanitize(localStorage.getItem("Link")),
             }}
           ></S.SectionSimpleText>
         </S.SectionInfo>
@@ -71,7 +73,7 @@ export default function MPIFReadPresenter(props: any) {
         <h1>서비스 설명</h1>
         <S.SectionService
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(props.ServiceMain),
+            __html: DOMPurify.sanitize(localStorage.getItem("ServiceMain")),
           }}
         ></S.SectionService>
       </S.Section>
