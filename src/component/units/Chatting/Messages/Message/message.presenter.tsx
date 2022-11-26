@@ -1,6 +1,6 @@
 import * as MS from "./message.styles";
 
-export default function MessageUI() {
+export default function MessageUI(props: any) {
   return (
     // Message owener
     <MS.Wrapper id="owener">
@@ -11,7 +11,9 @@ export default function MessageUI() {
       </MS.MessageInfo>
       <MS.MessageContext>
         {/* 메세지 내용 */}
-        <MS.MessageText>Hello</MS.MessageText>
+        <MS.MessageText>
+          {props.message ? props.message : "Hello"}
+        </MS.MessageText>
         {/* <img src="https://source.unsplash.com/random" alt="상대가 올린 이미지" /> */}
       </MS.MessageContext>
     </MS.Wrapper>

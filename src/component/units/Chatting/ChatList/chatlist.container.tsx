@@ -1,14 +1,16 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useId, useState } from "react";
 import { useRecoilState } from "recoil";
 import { db } from "../../../../common/firebase/firebase.config";
-import { ChatUser } from "../../../../common/recoil/chatuser";
+import { ChatUserInfo } from "../../../../common/recoil/chatuser";
+
 import ChatListUI from "./chatlist.presenter";
 
 export default function ChatListContainer() {
-  const [chatUser, setChatUser] = useRecoilState(ChatUser);
+  const [chatUser, setChatUser] = useRecoilState<any>(ChatUserInfo);
   const [chats, setChats] = useState([]);
-
+  const router = useRouter();
   // 계속 데이터를 넣는 것이 아닌 실시간 데이터를 받아서 넣어야함
   useEffect(() => {
     const getChats = () => {
@@ -31,7 +33,20 @@ export default function ChatListContainer() {
 
   // 채팅목록에서 채팅 클릭시 그 채팅방 기록을 가져오기 위해서 새롭게 전역변수 설정
   const onClickSelect = (e: any) => {
-    setChatUser(e);
+    setChatUser({
+      chatId:
+        e.uid > sessionStorage.uid
+          ? sessionStorage.uid + e.uid
+          : e.uid + sessionStorage.uid,
+      userInfo: e,
+    });
+    router.push(
+      `/chatting/${
+        e.uid > sessionStorage.uid
+          ? sessionStorage.uid + e.uid
+          : e.uid + sessionStorage.uid
+      }`
+    );
   };
   // console.log(chatUser);
 

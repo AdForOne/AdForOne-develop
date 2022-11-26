@@ -7,7 +7,7 @@ export default function MPIFChatBtn() {
 
   const router = useRouter();
   const onClickMoveChat = () => {
-    router.push("/chatting");
+    router.push(`/chatting/${sessionStorage.uid}`);
   };
   return (
     <MPIFChatBtn variant="contained" onClick={onClickMoveChat}>
