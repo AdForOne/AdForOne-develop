@@ -1,4 +1,7 @@
+import { collection, getDoc, getDocs } from "firebase/firestore";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { db } from "../../../common/firebase/firebase.config";
 import MainPresenter from "./main.presenter";
 
 const DataCard = [
@@ -15,10 +18,31 @@ const DataCard = [
 
 export default function MainContainer() {
   const router = useRouter();
+  const [Email, setEmail] = useState("");
+  const [Data, setData] = useState([{}]);
+
   const MoveBoardListBtn = () => {
     router.push("./board/list");
   };
+  const Test = async () => {
+    const querySnapshot = await getDocs(collection(db, "myPage"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      const DataArr = [doc.data()];
+      setEmail(doc.id);
+      setData(DataArr);
+    });
+  };
+  useEffect(() => {
+    Test();
+  }, []);
   return (
-    <MainPresenter DataCard={DataCard} MoveBoardListBtn={MoveBoardListBtn} />
+    <MainPresenter
+      DataCard={DataCard}
+      MoveBoardListBtn={MoveBoardListBtn}
+      Email={Email}
+      Data={Data}
+    />
   );
 }

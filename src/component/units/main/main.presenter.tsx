@@ -10,7 +10,7 @@ export default function MainPresenter(props: any) {
       <MS.TestImg src="./testimg/test.png" />
 
       {/* 카테고리 div */}
-      {/* 베스트 카테고리만 노출*/}
+      {/* 베스트 카테고리만 노출 */}
       <MS.CategoryWrapper>
         <MS.FindText>FIND</MS.FindText>
         <MS.Text>빠르게 인플루언서를 찾아보세요!</MS.Text>
@@ -24,11 +24,11 @@ export default function MainPresenter(props: any) {
       </MS.CategoryWrapper>
 
       {/* 카드 div */}
-      {/* 무한스크롤 적용시키기?*/}
+      {/* 무한스크롤 적용시키기? */}
       <MS.CardGridBox>
-        {props.DataCard.slice(0, 6).map((el: any, index: number) => (
+        {props.Data.slice(0, 6).map((el: any, index: number) => (
           <div key={index}>
-            <CardContainer />
+            <CardContainer Link={el.Link} />
             {/* {el.title} */}
           </div>
         ))}
