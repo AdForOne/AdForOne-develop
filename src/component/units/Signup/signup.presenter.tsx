@@ -60,6 +60,8 @@ export default function SignupPresenter(props: any) {
             helperText={props.formState.errors.nickName?.message}
             {...props.register("nickName")}
           />
+          <input type="file" onChange={props.onClick} />
+          <img src={props.preview} alt="" width={100} height={100} />
           <TextField
             margin="normal"
             required

@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // useSignIn 훅
 import useSignIn from "../../../common/firebase/firebase.auth";
 import { useRouter } from "next/router";
+import useStorage from "../../../common/firebase/firebase.storage";
+
 const schma = yup.object({
   nickName: yup.string().required("닉네임을 입력 해 주세요"),
   email: yup
@@ -40,6 +42,9 @@ export default function SignupContainer() {
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
   const [value, setValue] = useState<string>("인플루언서");
   const [Cate, setCate] = useState<any>([]);
+  const [userEmail, setEmail] = useState();
+  const [file, setFile] = useState();
+  const [preview, setPreview] = useState();
   const { signIn } = useSignIn();
 
   const SNS = [
@@ -79,6 +84,8 @@ export default function SignupContainer() {
         Cate,
         value
       );
+      const url = Upload(file, data.email);
+      setFile(url);
     } else {
       signIn(
         data.nickName,
@@ -89,10 +96,19 @@ export default function SignupContainer() {
         Cate,
         value
       );
+      const url = Upload(file, data.email);
+      console.log(url);
+      setFile(url);
     }
     router.push("/login");
   };
 
+  const { Upload } = useStorage();
+  const onPreview = (event: any) => {
+    // 브라우저 저장소에 url을 저장하는 방식, 매번 새로 저장하기 때문에 삭제하는 기능도 만들어야 한다.
+    const imageSrc = URL.createObjectURL(event.target.files?.[0]);
+    setPreview(imageSrc);
+  };
   return (
     <SignupPresenter
       Cate={Cate}
@@ -107,6 +123,8 @@ export default function SignupContainer() {
       checkedIcon={checkedIcon}
       value={value}
       handleChange={handleChange}
+      onClick={onPreview}
+      preview={preview}
     />
   );
 }
