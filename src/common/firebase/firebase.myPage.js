@@ -1,11 +1,17 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useRouter } from "next/router";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "./firebase.config";
 
 export default function usePage() {
   const createMyPage = async (email, Link, ServiceMain) => {
     try {
-      const docRef = await setDoc(doc(db, "myPage", email), {
+      const docRef = await updateDoc(doc(db, "users", email), {
         Link,
         ServiceMain,
       });

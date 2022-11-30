@@ -36,6 +36,8 @@ export default function useSignin() {
             value,
             uid: user.uid,
             displayName: user.displayName,
+            Link: "",
+            ServiceMain: "",
           });
           // 유저채팅정보
           await setDoc(doc(db, "userChats", user.uid), {
