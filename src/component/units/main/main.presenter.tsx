@@ -7,7 +7,7 @@ export default function MainPresenter(props: any) {
   return (
     <MS.Wrapper>
       {/* 메인광고 및 사이트 소개 */}
-      <MS.TestImg src="./testimg/test.png" />
+      <MS.TestImg src="https://firebasestorage.googleapis.com/v0/b/adfo-effc3.appspot.com/o/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2.png?alt=media" />
 
       {/* 카테고리 div */}
       {/* 베스트 카테고리만 노출 */}
