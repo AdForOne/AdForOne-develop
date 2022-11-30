@@ -69,7 +69,6 @@ export default function SearchContainer() {
         // userChats은 회원가입하면서 만들어진 컬렉션 (채팅을 담을 컬렉션)
         // userChats컬렉션을 updateDoc 으로 수정
 
-        // updateDoc 오류
         await updateDoc(doc(db, "userChats", sessionStorage.uid), {
           [ChatID + ".userInfo"]: {
             uid: user.uid,
