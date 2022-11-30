@@ -11,17 +11,16 @@ export default function MPIFReadContainer() {
 
   // db에 mypage정보 가져오는 함수
   const fetchPage = async () => {
-    const PageRef = doc(db, "myPage", `${router.query?.email}`);
-    const PageSnap = await getDoc(PageRef);
     const UserInfo = doc(db, "users", `${router.query?.email}`);
     const UserSnap = await getDoc(UserInfo);
-    localStorage.setItem("Link", PageSnap.data()?.Link);
-    localStorage.setItem("ServiceMain", PageSnap.data()?.ServiceMain);
+    localStorage.setItem("Link", UserSnap.data()?.Link);
+    localStorage.setItem("ServiceMain", UserSnap.data()?.ServiceMain);
     localStorage.setItem("email", UserSnap.data()?.email);
     localStorage.setItem("CheckCategory", UserSnap.data()?.CheckCategory);
     localStorage.setItem("SNSLink", UserSnap.data()?.SNSLink);
     localStorage.setItem("UsedSNS", UserSnap.data()?.UsedSNS);
     localStorage.setItem("value", UserSnap.data()?.value);
+    console.log(UserSnap.data());
   };
   useEffect(() => {
     fetchPage();

@@ -8,17 +8,18 @@ import Typography from "@mui/material/Typography";
 
 export default function CardContainer(props: any) {
   return (
-    <div>
-      <Card sx={{ maxWidth: 345 }}>
+    <div id={props.id} onClick={props.onClickMoveToPage}>
+      <Card sx={{ Width: 345 }}>
         <CardMedia
           component="img"
+          width="230"
           height="200"
           image="https://source.unsplash.com/random"
           alt="test img"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            인플루언서
+            {props.displayName}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="#1976D2"></Typography>
           <Typography variant="body2" color="text.secondary">
@@ -27,10 +28,7 @@ export default function CardContainer(props: any) {
         </CardContent>
         <CardActions>
           <Button variant="contained" disableElevation size="small">
-            카테고리1
-          </Button>
-          <Button variant="contained" disableElevation size="small">
-            카테고리2
+            {props.CheckCategory}
           </Button>
         </CardActions>
       </Card>

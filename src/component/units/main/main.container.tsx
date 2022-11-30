@@ -25,10 +25,10 @@ export default function MainContainer() {
     router.push("./board/list");
   };
   const Test = async () => {
-    const querySnapshot = await getDocs(collection(db, "myPage"));
+    const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+
       const DataArr = [doc.data()];
       setEmail(doc.id);
       setData(DataArr);
@@ -37,12 +37,16 @@ export default function MainContainer() {
   useEffect(() => {
     Test();
   }, []);
+  const onClickMoveToPage = (event: any) => {
+    router.push(`myPage/detail/${event.currentTarget.id}`);
+  };
   return (
     <MainPresenter
       DataCard={DataCard}
       MoveBoardListBtn={MoveBoardListBtn}
       Email={Email}
       Data={Data}
+      onClickMoveToPage={onClickMoveToPage}
     />
   );
 }

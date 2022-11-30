@@ -26,11 +26,14 @@ export default function MainPresenter(props: any) {
       {/* 카드 div */}
       {/* 무한스크롤 적용시키기? */}
       <MS.CardGridBox>
-        {props.Data.slice(0, 6).map((el: any, index: number) => (
-          <div key={index}>
-            <CardContainer Link={el.Link} />
-            {/* {el.title} */}
-          </div>
+        {props.Data.map((el: any, index: number) => (
+          <CardContainer
+            Link={el.Link}
+            displayName={el.displayName}
+            CheckCategory={el.CheckCategory}
+            id={el.email}
+            onClickMoveToPage={props.onClickMoveToPage}
+          />
         ))}
       </MS.CardGridBox>
       <MS.BtnBox>
