@@ -1,8 +1,9 @@
 import * as NB from "./navbar.styles";
 import { IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { IUserName } from "./navbar.type";
 
-export default function NavBarUI(props: any) {
+export default function NavBarUI(props: IUserName) {
   return (
     <NB.Wrapper>
       <NB.Logo>ADFO Chat</NB.Logo>

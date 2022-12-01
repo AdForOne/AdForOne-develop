@@ -11,7 +11,7 @@ export default function ChatListContainer() {
   const [chatUser, setChatUser] = useRecoilState<any>(ChatUserInfo);
   const [chats, setChats] = useState([]);
   const router = useRouter();
-  // 계속 데이터를 넣는 것이 아닌 실시간 데이터를 받아서 넣어야함
+
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(
@@ -30,7 +30,6 @@ export default function ChatListContainer() {
     sessionStorage.uid && getChats();
   }, []);
   // 유저정보(로그인한 유저)가 바뀔때만 useEffect 로 채팅정보 가져옴
-
   // 채팅목록에서 채팅 클릭시 그 채팅방 기록을 가져오기 위해서 새롭게 전역변수 설정
   const onClickSelect = (e: any) => {
     setChatUser({
@@ -48,7 +47,6 @@ export default function ChatListContainer() {
       }`
     );
   };
-  // console.log(chatUser);
 
   return (
     <>

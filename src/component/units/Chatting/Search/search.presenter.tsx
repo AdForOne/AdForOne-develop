@@ -7,9 +7,9 @@ export default function SearchUI(props: any) {
         <SC.SearchInput
           type="text"
           placeholder="유저찾기"
-          value={props.userEmail}
+          value={props.userName}
           onKeyDown={props.handleKey}
-          onChange={(e) => props.setUserEmail(e.target.value)}
+          onChange={(e) => props.setUserName(e.target.value)}
           // 간단한 온체인지함수
         />
       </SC.SearchBox>
@@ -19,7 +19,7 @@ export default function SearchUI(props: any) {
           {/* 온클릭 함수 작성필요. 유저 정보가 Search창에 나올시 채팅목록을 불러와야함 */}
           <SC.UsersImg src="https://source.unsplash.com/random" alt="" />
           <SC.UserChatInfo>
-            <span>{props.user.email}</span>
+            <span>{props.user.displayName}</span>
           </SC.UserChatInfo>
         </SC.UserChatWrapper>
       )}
