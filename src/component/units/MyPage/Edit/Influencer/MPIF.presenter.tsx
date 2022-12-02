@@ -90,8 +90,16 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             height="150"
           ></Image>
           <S.PriceInfo>
-            <MPIFPriceInputShort label="베이직(원)" />
-            <MPIFPriceInputLong label="서비스 한 줄 설명" />
+            <MPIFPriceInputShort
+              label="베이직(원)"
+              register={props.register}
+              registerName={"basicPrice"}
+            />
+            <MPIFPriceInputLong
+              label="서비스 한 줄 설명"
+              register={props.register}
+              registerName={"basicText"}
+            />
           </S.PriceInfo>
         </S.PriceBox>
         <S.PriceBox>
@@ -102,8 +110,16 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             height="150"
           ></Image>
           <S.PriceInfo>
-            <MPIFPriceInputShort label="익스퍼트(원)" />
-            <MPIFPriceInputLong label="서비스 한 줄 설명" />
+            <MPIFPriceInputShort
+              label="익스퍼트(원)"
+              register={props.register}
+              registerName={"expertPrice"}
+            />
+            <MPIFPriceInputLong
+              label="서비스 한 줄 설명"
+              register={props.register}
+              registerName={"expertText"}
+            />
           </S.PriceInfo>
         </S.PriceBox>
         <S.PriceBox>
@@ -114,8 +130,16 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             height="150"
           ></Image>
           <S.PriceInfo>
-            <MPIFPriceInputShort label="프로(원)" />
-            <MPIFPriceInputLong label="서비스 한 줄 설명" />
+            <MPIFPriceInputShort
+              label="프로(원)"
+              register={props.register}
+              registerName={"proPrice"}
+            />
+            <MPIFPriceInputLong
+              label="서비스 한 줄 설명"
+              register={props.register}
+              registerName={"proText"}
+            />
           </S.PriceInfo>
         </S.PriceBox>
         <button style={{ width: 1143 }} type="submit">

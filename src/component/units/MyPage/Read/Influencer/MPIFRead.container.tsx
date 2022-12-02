@@ -8,25 +8,37 @@ import MPIFReadPresenter from "./MPIFRead.presenter";
 export default function MPIFReadContainer() {
   const isSsr = useIsSsr();
   const router = useRouter();
+  const [render, setRender] = useState(false);
 
   // db에 mypage정보 가져오는 함수
   const fetchPage = async () => {
     const UserInfo = doc(db, "users", `${router.query?.email}`);
     const UserSnap = await getDoc(UserInfo);
-    localStorage.setItem("Link", UserSnap.data()?.Link);
-    localStorage.setItem("ServiceMain", UserSnap.data()?.ServiceMain);
-    localStorage.setItem("email", UserSnap.data()?.email);
-    localStorage.setItem("CheckCategory", UserSnap.data()?.CheckCategory);
-    localStorage.setItem("SNSLink", UserSnap.data()?.SNSLink);
-    localStorage.setItem("UsedSNS", UserSnap.data()?.UsedSNS);
-    localStorage.setItem("value", UserSnap.data()?.value);
+    const userMpData = {
+      Link: UserSnap.data()?.Link,
+      ServiceMain: UserSnap.data()?.ServiceMain,
+      email: UserSnap.data()?.email,
+      CheckCategory: UserSnap.data()?.CheckCategory,
+      SNSLink: UserSnap.data()?.SNSLink,
+      UsedSNS: UserSnap.data()?.UsedSNS,
+      value: UserSnap.data()?.value,
+      basicPrice: UserSnap.data()?.basicPrice,
+      basicText: UserSnap.data()?.basicText,
+      expertPrice: UserSnap.data()?.expertPrice,
+      expertText: UserSnap.data()?.expertText,
+      proPrice: UserSnap.data()?.LiproPrice,
+      proText: UserSnap.data()?.proText,
+    };
+    localStorage.clear();
+    localStorage.setItem("userMpData", JSON.stringify(userMpData));
     console.log(UserSnap.data());
+    setRender(true);
   };
   useEffect(() => {
     fetchPage();
-  }, []);
+  });
 
-  if (localStorage.getItem("ServiceMain")) {
+  if (render) {
     return <MPIFReadPresenter />;
   }
 }

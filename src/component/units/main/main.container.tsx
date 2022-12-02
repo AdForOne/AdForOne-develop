@@ -1,7 +1,9 @@
-import { collection, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { db } from "../../../common/firebase/firebase.config";
+import { ISAD } from "../../../common/recoil/isAD";
 import MainPresenter from "./main.presenter";
 
 const DataCard = [
@@ -20,26 +22,29 @@ export default function MainContainer() {
   const router = useRouter();
   const [Email, setEmail] = useState("");
   const [Data, setData] = useState([{}]);
-
+  const [isList, setIsList] = useState(false);
   const MoveBoardListBtn = () => {
     router.push("./board/list");
   };
+  const arr = [];
   const Test = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-
-      const DataArr = [doc.data()];
-      setEmail(doc.id);
-      setData(DataArr);
+      arr.push(doc.data());
     });
+    setData(arr);
+    console.log(Data);
   };
-  useEffect(() => {
+  if (isList !== true) {
     Test();
-  }, []);
-  const onClickMoveToPage = (event: any) => {
+    setIsList(true);
+  }
+
+  const onClickMoveToPage = async (event: any) => {
     router.push(`myPage/detail/${event.currentTarget.id}`);
   };
+
   return (
     <MainPresenter
       DataCard={DataCard}
@@ -47,6 +52,7 @@ export default function MainContainer() {
       Email={Email}
       Data={Data}
       onClickMoveToPage={onClickMoveToPage}
+      arr={arr}
     />
   );
 }
