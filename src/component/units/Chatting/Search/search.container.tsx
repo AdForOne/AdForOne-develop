@@ -11,21 +11,19 @@ import {
   updateDoc,
   serverTimestamp,
 } from "firebase/firestore";
-
 import { db } from "../../../../common/firebase/firebase.config";
 
-// 파이어베이스 DB가져오기
-
 export default function SearchContainer() {
-  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [user, setUser] = useState<null | any>(null);
   const [err, setErr] = useState(false);
-  // 로그인이 되있는지 확인 및 전역변수를 통해 유저정보 가져오기?
-  // const [LoginUser, setLoginUser] = useRecoil????
 
   const handleSearch = async () => {
     // firebase query문
-    const q = query(collection(db, "users"), where("email", "==", userEmail));
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", userName)
+    );
 
     // 코드 최적화 필요 11/23
     try {
@@ -73,6 +71,8 @@ export default function SearchContainer() {
           [ChatID + ".userInfo"]: {
             uid: user.uid,
             email: user.email,
+            displayName: user.displayName,
+            value: user.value,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
@@ -80,6 +80,8 @@ export default function SearchContainer() {
           [ChatID + ".userInfo"]: {
             uid: sessionStorage.uid,
             email: sessionStorage.userEmail,
+            displayName: user.displayName,
+            value: user.value,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
@@ -88,14 +90,14 @@ export default function SearchContainer() {
       console.log("에러", error.message);
     }
     setUser(null);
-    setUserEmail("");
+    setUserName("");
   };
 
   return (
     <>
       <SearchUI
-        userEmail={userEmail}
-        setUserEmail={setUserEmail}
+        userName={userName}
+        setUserName={setUserName}
         user={user}
         err={err}
         handleSearch={handleSearch}

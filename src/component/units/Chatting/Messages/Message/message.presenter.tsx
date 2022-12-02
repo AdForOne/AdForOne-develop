@@ -7,7 +7,7 @@ export default function MessageUI(props: any) {
       <MS.MessageInfo>
         {/* 메세지 정보 */}
         <MS.UserImg src="https://source.unsplash.com/random" alt="상대프사" />
-        <span>Just Now</span>
+        <span>{props.message.time.toLocaleTimeString()}</span>
       </MS.MessageInfo>
       <MS.MessageContext>
         {/* 메세지 내용 */}

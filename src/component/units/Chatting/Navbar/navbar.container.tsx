@@ -4,7 +4,7 @@ import { auth } from "../../../../common/firebase/firebase.config";
 import NavBarUI from "./navbar.presenter";
 
 export default function NavBarContainer() {
-  const [UserName, setUserName] = useState("");
+  const [UserName, setUserName] = useState<string | null>("");
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {

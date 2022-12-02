@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const MessageInfo = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: gray;
   font-weight: 300;
 `;
