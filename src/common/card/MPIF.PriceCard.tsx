@@ -4,7 +4,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-export default function MPIFPriceCard() {
+interface IPropsMPIFPriceCard {
+  price: string | null;
+  text: string | null;
+  cate: string;
+}
+
+export default function MPIFPriceCard(props: IPropsMPIFPriceCard) {
   return (
     <div>
       <Card sx={{ width: 200, height: 350 }}>
@@ -16,15 +22,16 @@ export default function MPIFPriceCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            베이직
+            {props.cate}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Basic 가격(원)
+            {props.price}
           </Typography>
         </CardContent>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             서비스 설명
+            {props.text}
           </Typography>
         </CardContent>
       </Card>

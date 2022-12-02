@@ -32,7 +32,9 @@ export default function MPIFReadPresenter(props: any) {
                 <S.InfoText
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
-                      `이메일 : ${localStorage.getItem("email")}`
+                      `이메일 : ${
+                        JSON.parse(localStorage.getItem("userMpData")).email
+                      }`
                     ),
                   }}
                 ></S.InfoText>
@@ -40,7 +42,10 @@ export default function MPIFReadPresenter(props: any) {
               <S.InfoTextWrapper>
                 <S.InfoText>
                   <Tags
-                    UserCateGory={localStorage.getItem("CheckCategory")}
+                    UserCateGory={
+                      JSON.parse(localStorage.getItem("userMpData"))
+                        .CheckCategory
+                    }
                   ></Tags>
                 </S.InfoText>
               </S.InfoTextWrapper>
@@ -50,7 +55,9 @@ export default function MPIFReadPresenter(props: any) {
                 <S.InfoText
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(
-                      `SNS종류 : ${localStorage.getItem("UsedSNS")}`
+                      `SNS종류 : ${
+                        JSON.parse(localStorage.getItem("userMpData")).UsedSNS
+                      }`
                     ),
                   }}
                 ></S.InfoText>
@@ -65,7 +72,9 @@ export default function MPIFReadPresenter(props: any) {
           <h1>간단 소개글</h1>
           <S.SectionSimpleText
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(localStorage.getItem("Link")),
+              __html: DOMPurify.sanitize(
+                JSON.parse(localStorage.getItem("userMpData")).Link
+              ),
             }}
           ></S.SectionSimpleText>
         </S.SectionInfo>
@@ -73,16 +82,30 @@ export default function MPIFReadPresenter(props: any) {
         <h1>서비스 설명</h1>
         <S.SectionService
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(localStorage.getItem("ServiceMain")),
+            __html: DOMPurify.sanitize(
+              JSON.parse(localStorage.getItem("userMpData")).ServiceMain
+            ),
           }}
         ></S.SectionService>
       </S.Section>
       <S.DivideLine></S.DivideLine>
       <h1>가격정보</h1>
       <S.PriceCardWrapper>
-        <MPIFPriceCard />
-        <MPIFPriceCard />
-        <MPIFPriceCard />
+        <MPIFPriceCard
+          cate={"베이직"}
+          price={JSON.parse(localStorage.getItem("userMpData")).basicPrice}
+          text={JSON.parse(localStorage.getItem("userMpData")).basicText}
+        />
+        <MPIFPriceCard
+          cate={"익스퍼트"}
+          price={JSON.parse(localStorage.getItem("userMpData")).expertPrice}
+          text={JSON.parse(localStorage.getItem("userMpData")).expertText}
+        />
+        <MPIFPriceCard
+          cate={"프로"}
+          price={JSON.parse(localStorage.getItem("userMpData")).proPrice}
+          text={JSON.parse(localStorage.getItem("userMpData")).proText}
+        />
       </S.PriceCardWrapper>
     </S.Outline>
   );
