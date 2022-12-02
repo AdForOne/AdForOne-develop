@@ -1,6 +1,7 @@
 import * as CL from "./chatlist.styles";
+import { IChatList } from "./chatlist.type";
 
-export default function ChatListUI(props: any) {
+export default function ChatListUI(props: IChatList) {
   return (
     <CL.Wrapper>
       {Object.entries(props.chats)

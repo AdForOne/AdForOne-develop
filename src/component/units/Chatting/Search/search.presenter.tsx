@@ -1,6 +1,7 @@
 import * as SC from "./search.styles";
+import { ISearch } from "./search.type";
 
-export default function SearchUI(props: any) {
+export default function SearchUI(props: ISearch) {
   return (
     <SC.Wrapper>
       <SC.SearchBox>
@@ -9,7 +10,7 @@ export default function SearchUI(props: any) {
           placeholder="유저찾기"
           value={props.userName}
           onKeyDown={props.handleKey}
-          onChange={(e) => props.setUserName(e.target.value)}
+          onChange={props.onChangeUserName}
           // 간단한 온체인지함수
         />
       </SC.SearchBox>

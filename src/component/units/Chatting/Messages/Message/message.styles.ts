@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: ${(props) =>
+  flex-direction: ${(props: any) =>
     props.id === sessionStorage.uid ? "row-reverse" : "row"};
   gap: 20px;
   margin-bottom: 20px;
@@ -25,10 +25,10 @@ export const MessageContext = styled.div`
 `;
 
 export const MessageText = styled.p`
-  background-color: ${(props) =>
+  background-color: ${(props: any) =>
     props.id === sessionStorage.uid ? "#8da4f1" : "white"};
   padding: 10px 20px;
-  border-radius: ${(props) =>
+  border-radius: ${(props: any) =>
     props.id === sessionStorage.uid
       ? "10px 0px 10px 10px"
       : "0px 10px 10px 10px"};

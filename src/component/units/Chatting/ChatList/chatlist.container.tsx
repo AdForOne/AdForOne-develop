@@ -4,11 +4,10 @@ import { useEffect, useId, useState } from "react";
 import { useRecoilState } from "recoil";
 import { db } from "../../../../common/firebase/firebase.config";
 import { ChatUserInfo } from "../../../../common/recoil/chatuser";
-
 import ChatListUI from "./chatlist.presenter";
 
 export default function ChatListContainer() {
-  const [chatUser, setChatUser] = useRecoilState<any>(ChatUserInfo);
+  const [, setChatUser] = useRecoilState<any>(ChatUserInfo);
   const [chats, setChats] = useState([]);
   const router = useRouter();
 
@@ -50,11 +49,7 @@ export default function ChatListContainer() {
 
   return (
     <>
-      <ChatListUI
-        chats={chats}
-        chatUser={chatUser}
-        onClickSelect={onClickSelect}
-      />
+      <ChatListUI chats={chats} onClickSelect={onClickSelect} />
     </>
   );
 }
