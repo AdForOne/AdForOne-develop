@@ -34,7 +34,6 @@ export default function MainContainer() {
       arr.push(doc.data());
     });
     setData(arr);
-    console.log(Data);
   };
   if (isList !== true) {
     Test();
