@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import SearchUI from "./search.presenter";
 import {
   query,
@@ -14,9 +14,9 @@ import {
 import { db } from "../../../../common/firebase/firebase.config";
 
 export default function SearchContainer() {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState<string>("");
   const [user, setUser] = useState<null | any>(null);
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState<boolean>(false);
 
   const handleSearch = async () => {
     // firebase query문
@@ -44,10 +44,13 @@ export default function SearchContainer() {
     }
   };
 
-  const handleKey = (e: any) => {
+  const handleKey = (e: KeyboardEvent) => {
     e.code === "Enter" && handleSearch();
   };
 
+  const onChangeUserName = (event: ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
   const onClickSelect = async () => {
     // 본인과 검색한 사람의 채팅을 가져와야함
     // ex) 본인의 ID, 상대방 ID를 가져와서 채팅모음에 저장되어 있어야함
@@ -97,10 +100,9 @@ export default function SearchContainer() {
     <>
       <SearchUI
         userName={userName}
-        setUserName={setUserName}
+        onChangeUserName={onChangeUserName}
         user={user}
         err={err}
-        handleSearch={handleSearch}
         handleKey={handleKey}
         onClickSelect={onClickSelect}
       />

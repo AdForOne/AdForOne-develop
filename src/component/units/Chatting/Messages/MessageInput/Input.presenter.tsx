@@ -1,14 +1,15 @@
 import { Button } from "@mui/material";
 import * as IS from "./Input.styles";
+import { IInput } from "./Input.type";
 
-export default function InputUI(props: any) {
+export default function InputUI(props: IInput) {
   return (
     // Input
     <IS.Wrapper>
       <IS.MessageInput
         type="text"
         value={props.text}
-        onChange={(e) => props.setText(e.target.value)}
+        onChange={props.onChangeTest}
         placeholder="대화를 입력해주세요"
       />
       <IS.MessageWrapper>

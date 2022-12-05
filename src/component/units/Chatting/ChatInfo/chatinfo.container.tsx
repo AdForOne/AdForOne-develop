@@ -7,7 +7,7 @@ export default function ChatInfoContainer() {
 
   return (
     <>
-      <ChatInfoUI chatUser={chatUser} />
+      <ChatInfoUI chatUser={chatUser.userInfo} />
     </>
   );
 }

@@ -4,8 +4,8 @@ export default function ChatInfoUI(props: any) {
   return (
     // Chat Info
     <CI.Wrapper>
-      <CI.ChatInfoTitle>{props.chatUser.userInfo.displayName}</CI.ChatInfoTitle>
-      <CI.ChatInfo>{props.chatUser.userInfo.value}</CI.ChatInfo>
+      <CI.ChatInfoTitle>{props.chatUser.displayName}</CI.ChatInfoTitle>
+      <CI.ChatInfo>{props.chatUser.value}</CI.ChatInfo>
     </CI.Wrapper>
   );
 }
