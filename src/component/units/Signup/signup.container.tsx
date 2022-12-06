@@ -1,7 +1,7 @@
 import SignupPresenter from "./signup.presenter";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { useState } from "react";
+import { useRef, useState } from "react";
 // Form & yup
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -38,13 +38,14 @@ const schma = yup.object({
 });
 
 export default function SignupContainer() {
+  const router = useRouter();
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
   const [value, setValue] = useState<string>("인플루언서");
   const [Cate, setCate] = useState<any>([]);
   const [userEmail, setEmail] = useState();
   const [file, setFile] = useState();
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState("");
   const { signIn } = useSignIn();
 
   const SNS = [
@@ -69,9 +70,7 @@ export default function SignupContainer() {
     resolver: yupResolver(schma),
     mode: "onChange",
   });
-
-  const router = useRouter();
-
+  /** 회원가입 함수 */
   const onClickSignUp = (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
     if (value !== "인플루언서") {
@@ -104,11 +103,17 @@ export default function SignupContainer() {
   };
 
   const { Upload } = useStorage();
+  const imgRef = useRef();
   const onPreview = (event: any) => {
     // 브라우저 저장소에 url을 저장하는 방식, 매번 새로 저장하기 때문에 삭제하는 기능도 만들어야 한다.
     const imageSrc = URL.createObjectURL(event.target.files?.[0]);
     setPreview(imageSrc);
   };
+  const onClickUpload = () => {
+    imgRef.current?.click();
+  };
+
+  /** input(file)을 히든으로 감추고 임의의 버튼으로 대체하기 위한 ref */
   return (
     <SignupPresenter
       Cate={Cate}
@@ -125,6 +130,8 @@ export default function SignupContainer() {
       handleChange={handleChange}
       onClick={onPreview}
       preview={preview}
+      imgRef={imgRef}
+      onClickUpload={onClickUpload}
     />
   );
 }
