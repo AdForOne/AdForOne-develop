@@ -47,6 +47,23 @@ export default function SignupPresenter(props: any) {
       <SU.InfoWrapper>
         {/* Form */}
         <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
+          <SU.ImageWrapper>
+            <input
+              onChange={props.onClick}
+              type="file"
+              hidden
+              ref={props.imgRef}
+            />
+            <SU.ImageBox
+              src={props.preview ? props.preview : "/Profile.png"}
+              alt=""
+              width={100}
+              height={100}
+            />
+            <SU.Imagebutton onClick={props.onClickUpload}>
+              프로필 사진 설정
+            </SU.Imagebutton>
+          </SU.ImageWrapper>
           <TextField
             margin="normal"
             required
@@ -60,8 +77,6 @@ export default function SignupPresenter(props: any) {
             helperText={props.formState.errors.nickName?.message}
             {...props.register("nickName")}
           />
-          <input type="file" onChange={props.onClick} />
-          <img src={props.preview} alt="" width={100} height={100} />
           <TextField
             margin="normal"
             required
@@ -100,7 +115,6 @@ export default function SignupPresenter(props: any) {
             helperText={props.formState.errors.passwordCheck?.message}
             {...props.register("passwordCheck")}
           />
-
           {/* SNS 체크박스 */}
           {props.value == "인플루언서" ? (
             <Autocomplete
@@ -135,7 +149,6 @@ export default function SignupPresenter(props: any) {
               )}
             />
           )}
-
           {props.value == "인플루언서" ? (
             <TextField
               margin="normal"
@@ -159,7 +172,6 @@ export default function SignupPresenter(props: any) {
               {...props.register("SNSLink")}
             />
           )}
-
           {/* 카테고리 태그 */}
           {props.value == "인플루언서" ? (
             <Autocomplete
@@ -194,7 +206,6 @@ export default function SignupPresenter(props: any) {
           ) : (
             <></>
           )}
-
           <Button
             type="submit"
             variant="contained"
