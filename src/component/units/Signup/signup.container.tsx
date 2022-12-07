@@ -43,10 +43,10 @@ export default function SignupContainer() {
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
   const [value, setValue] = useState<string>("인플루언서");
   const [Cate, setCate] = useState<any>([]);
-  const [userEmail, setEmail] = useState();
   const [file, setFile] = useState();
   const [preview, setPreview] = useState("");
   const { signIn } = useSignIn();
+  const { Upload } = useStorage();
 
   const SNS = [
     { label: "Instargram", id: 1 },
@@ -71,38 +71,40 @@ export default function SignupContainer() {
     mode: "onChange",
   });
   /** 회원가입 함수 */
-  const onClickSignUp = (data: any) => {
+  const onClickSignUp = async (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
     if (value !== "인플루언서") {
-      signIn(
-        data.nickName,
-        data.email,
-        data.password,
-        data.UsedSNS,
-        data.SNSLink,
-        Cate,
-        value
-      );
-      const url = Upload(file, data.email);
+      const url = await Upload(file, data.email);
       setFile(url);
-    } else {
-      signIn(
-        data.nickName,
-        data.email,
-        data.password,
-        data.UsedSNS,
-        data.SNSLink,
-        Cate,
-        value
-      );
-      const url = Upload(file, data.email);
       console.log(url);
+      signIn(
+        data.nickName,
+        data.email,
+        data.password,
+        data.UsedSNS,
+        data.SNSLink,
+        Cate,
+        value,
+        url
+      );
+    } else {
+      const url = await Upload(file, data.email);
       setFile(url);
+      console.log(url);
+      signIn(
+        data.nickName,
+        data.email,
+        data.password,
+        data.UsedSNS,
+        data.SNSLink,
+        Cate,
+        value,
+        url
+      );
     }
     router.push("/login");
   };
 
-  const { Upload } = useStorage();
   const imgRef = useRef();
   const onPreview = (event: any) => {
     // 브라우저 저장소에 url을 저장하는 방식, 매번 새로 저장하기 때문에 삭제하는 기능도 만들어야 한다.

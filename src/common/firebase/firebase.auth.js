@@ -3,7 +3,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./firebase.config";
 
 export default function useSignin() {
-  /** displayName, email, password, UsedSNS, SNSLink, CheckCategory, value */
+  /** displayName, email, password, UsedSNS, SNSLink, CheckCategory, value, url */
   const signIn = (
     displayName,
     email,
@@ -11,7 +11,8 @@ export default function useSignin() {
     UsedSNS,
     SNSLink,
     CheckCategory,
-    value
+    value,
+    url
   ) => {
     createUserWithEmailAndPassword(auth, email, password, displayName)
       .then(async (userCredential) => {
@@ -38,6 +39,7 @@ export default function useSignin() {
             displayName: user.displayName,
             Link: "",
             ServiceMain: "",
+            url,
           });
           // 유저채팅정보
           await setDoc(doc(db, "userChats", user.uid), {
