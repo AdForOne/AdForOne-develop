@@ -5,11 +5,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import styled from "@emotion/styled";
 
+const Wrapper = styled.div`
+  width: 300px;
+  height: 100%;
+`;
 export default function CardContainer(props: any) {
   return (
-    <div id={props.id} onClick={props.onClickMoveToPage}>
-      <Card sx={{ Width: 345 }}>
+    <Wrapper id={props.id} onClick={props.onClickMoveToPage}>
+      <Card sx={{ Width: 300 }}>
         <CardMedia
           component="img"
           width="230"
@@ -23,7 +28,7 @@ export default function CardContainer(props: any) {
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="#1976D2"></Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.Link}
+            {props.Link === "" ? "소개글이 없습니다." : props.Link}
           </Typography>
         </CardContent>
         <CardActions>
@@ -32,6 +37,6 @@ export default function CardContainer(props: any) {
           </Button>
         </CardActions>
       </Card>
-    </div>
+    </Wrapper>
   );
 }
