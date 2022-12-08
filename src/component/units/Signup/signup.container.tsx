@@ -74,9 +74,6 @@ export default function SignupContainer() {
   const onClickSignUp = async (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
     if (value !== "인플루언서") {
-      const url = await Upload(file, data.email);
-      setFile(url);
-      console.log(url);
       signIn(
         data.nickName,
         data.email,
@@ -84,13 +81,11 @@ export default function SignupContainer() {
         data.UsedSNS,
         data.SNSLink,
         Cate,
-        value,
-        url
+        value
       );
+      const url = Upload(file, data.email);
+      console.log(url);
     } else {
-      const url = await Upload(file, data.email);
-      setFile(url);
-      console.log(url);
       signIn(
         data.nickName,
         data.email,
@@ -98,9 +93,10 @@ export default function SignupContainer() {
         data.UsedSNS,
         data.SNSLink,
         Cate,
-        value,
-        url
+        value
       );
+      const url = Upload(file, data.email);
+      console.log(url);
     }
     router.push("/login");
   };
@@ -110,6 +106,7 @@ export default function SignupContainer() {
     // 브라우저 저장소에 url을 저장하는 방식, 매번 새로 저장하기 때문에 삭제하는 기능도 만들어야 한다.
     const imageSrc = URL.createObjectURL(event.target.files?.[0]);
     setPreview(imageSrc);
+    setFile(event.target.files?.[0]);
   };
   const onClickUpload = () => {
     imgRef.current?.click();
