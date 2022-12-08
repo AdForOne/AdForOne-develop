@@ -10,8 +10,12 @@ export default function MPIFReadPresenter(props: any) {
     <S.Outline>
       <S.Header>
         <S.HeaderImg>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              JSON.parse(localStorage.getItem("userMpData")).profileImg
+                ? JSON.parse(localStorage.getItem("userMpData")).profileImg
+                : "/Profile.png"
+            }
             alt="사용자 기본이미지"
             width="300"
             height="200"

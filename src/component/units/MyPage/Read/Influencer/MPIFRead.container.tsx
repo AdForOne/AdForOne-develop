@@ -28,6 +28,7 @@ export default function MPIFReadContainer() {
       expertText: UserSnap.data()?.expertText,
       proPrice: UserSnap.data()?.LiproPrice,
       proText: UserSnap.data()?.proText,
+      profileImg: UserSnap.data()?.profileImg,
     };
     localStorage.clear();
     localStorage.setItem("userMpData", JSON.stringify(userMpData));

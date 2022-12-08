@@ -17,9 +17,9 @@ export default function CardContainer(props: any) {
       <Card sx={{ Width: 300 }}>
         <CardMedia
           component="img"
-          width="230"
-          height="200"
-          image="https://source.unsplash.com/random"
+          width="300"
+          height="300"
+          image={props.profileImg ? props.profileImg : "/Profile.png"}
           alt="test img"
         />
         <CardContent>

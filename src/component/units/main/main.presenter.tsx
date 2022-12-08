@@ -33,6 +33,7 @@ export default function MainPresenter(props: any) {
             CheckCategory={el.CheckCategory}
             id={el.email}
             onClickMoveToPage={props.onClickMoveToPage}
+            profileImg={el.profileImg}
           />
         ))}
       </MS.CardGridBox>
