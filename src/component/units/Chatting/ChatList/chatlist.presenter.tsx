@@ -13,12 +13,19 @@ export default function ChatListUI(props: IChatList) {
               props.onClickSelect(el[1].userInfo);
             }}
           >
-            <CL.UsersImg src="https://source.unsplash.com/random" alt="" />
+            <CL.UsersImg
+              src={
+                el[1].userInfo?.profileImg
+                  ? el[1].userInfo.profileImg
+                  : "https://source.unsplash.com/random"
+              }
+              alt=""
+            />
             <CL.UserChatInfo>
-              <CL.UserName>{el[1].userInfo.displayName}</CL.UserName>
+              <CL.UserName>{el[1].userInfo?.displayName}</CL.UserName>
               <CL.LatestMessage>
                 {/* 최근메세지 */}
-                {el[1].userInfo.lastMessage?.text}
+                {el[1].userInfo?.lastMessage?.text}
               </CL.LatestMessage>
             </CL.UserChatInfo>
           </CL.UserChatWrapper>
