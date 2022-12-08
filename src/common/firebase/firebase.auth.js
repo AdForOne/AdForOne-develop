@@ -39,14 +39,14 @@ export default function useSignin() {
             displayName: user.displayName,
             Link: "",
             ServiceMain: "",
-            url,
+            profileImg: "",
           });
           // 유저채팅정보
           await setDoc(doc(db, "userChats", user.uid), {
             // userChatInfo,
           });
         } catch (e) {
-          console.log(e.message);
+          console.log(e.message, "회원가입 에러");
         }
 
         // ...
