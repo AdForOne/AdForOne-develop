@@ -10,11 +10,17 @@ export default function NavBarUI(props: IUserName) {
       <NB.User>
         {/* 이미지 수정해야함 */}
         <NB.UserIMG
-          src="https://source.unsplash.com/random"
+          src={
+            props.UserIMG ? props.UserIMG : "https://source.unsplash.com/random"
+          }
           alt=""
         ></NB.UserIMG>
         {props.UserName}
-        <IconButton aria-label="delete" size="small">
+        <IconButton
+          aria-label="delete"
+          size="small"
+          onClick={props.onClickBack}
+        >
           <ArrowBackIcon fontSize="small" sx={{ color: "white" }} />
         </IconButton>
       </NB.User>

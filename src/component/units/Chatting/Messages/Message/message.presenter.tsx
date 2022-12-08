@@ -6,7 +6,14 @@ export default function MessageUI(props: any) {
     <MS.Wrapper id={props.message.id}>
       <MS.MessageInfo>
         {/* 메세지 정보 */}
-        <MS.UserImg src="https://source.unsplash.com/random" alt="상대프사" />
+        <MS.UserImg
+          src={
+            props.message.profileImg
+              ? props.message.profileImg
+              : "https://source.unsplash.com/random"
+          }
+          alt="상대프사"
+        />
         <span>{props.message.time.toLocaleTimeString()}</span>
       </MS.MessageInfo>
       <MS.MessageContext>

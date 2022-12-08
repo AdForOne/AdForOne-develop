@@ -12,6 +12,7 @@ export interface ISearch {
     email: string;
     uid: string;
     value: string;
+    profileImg: string;
   };
   err: boolean;
   onClickSelect: () => void;

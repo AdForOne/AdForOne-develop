@@ -24,6 +24,7 @@ export default function InputContainer() {
         text,
         senderId: sessionStorage.uid,
         date: Timestamp.now(),
+        profileImg: sessionStorage.profileImg,
       }),
     });
     await updateDoc(doc(db, "userChats", sessionStorage.uid), {

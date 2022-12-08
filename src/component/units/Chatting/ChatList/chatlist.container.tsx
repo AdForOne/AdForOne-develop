@@ -1,6 +1,6 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { db } from "../../../../common/firebase/firebase.config";
 import { ChatUserInfo } from "../../../../common/recoil/chatuser";

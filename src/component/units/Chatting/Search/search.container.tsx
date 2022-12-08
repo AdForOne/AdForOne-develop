@@ -25,7 +25,6 @@ export default function SearchContainer() {
       where("displayName", "==", userName)
     );
 
-    // 코드 최적화 필요 11/23
     try {
       const querySnapshot = await getDocs(q);
       // 유저가 없다면
@@ -45,6 +44,11 @@ export default function SearchContainer() {
   };
 
   const handleKey = (e: KeyboardEvent) => {
+    // 나와의 채팅일시 return 으로 함수 종료
+    if (userName === sessionStorage.displayName) {
+      setErr(true);
+      return;
+    }
     e.code === "Enter" && handleSearch();
   };
 
@@ -76,15 +80,18 @@ export default function SearchContainer() {
             email: user.email,
             displayName: user.displayName,
             value: user.value,
+            profileImg: user.profileImg,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
+
         await updateDoc(doc(db, "userChats", user.uid), {
           [ChatID + ".userInfo"]: {
             uid: sessionStorage.uid,
             email: sessionStorage.userEmail,
-            displayName: user.displayName,
-            value: user.value,
+            displayName: sessionStorage.displayName,
+            value: sessionStorage.userValue,
+            profileImg: sessionStorage.profileImg,
           },
           [ChatID + ".date"]: serverTimestamp(),
         });
