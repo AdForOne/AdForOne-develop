@@ -36,5 +36,17 @@ export default function usePage() {
     }
   };
 
-  return { createMyPage };
+  /** email, Link(소개글), SNSLink(회사링크) */
+  const createMyPageAD = async (email, Link, SNSLink) => {
+    try {
+      const docRef = await updateDoc(doc(db, "users", email), {
+        Link,
+        SNSLink,
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  return { createMyPage, createMyPageAD };
 }

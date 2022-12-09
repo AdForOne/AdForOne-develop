@@ -4,7 +4,7 @@ export const DivideLine = styled.div`
   border-top: 2px solid #c4c4c4;
   margin: 5px 0px;
 `;
-export const Outline = styled.div`
+export const Outline = styled.form`
   background-color: #fff;
   width: 100%;
   padding: 30px;
@@ -79,6 +79,7 @@ export const SectionInfo = styled.div`
   font-weight: 700;
 `;
 export const SectionInfoText = styled.div`
+  width: 100%;
   font-size: 19px;
   font-weight: 500;
 `;

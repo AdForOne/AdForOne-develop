@@ -1,16 +1,14 @@
 import Image from "next/image";
 import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
 import MPADChatBtn from "../../../../../common/btns/MPAD/MPAD.ChatBtn";
-import MPADLinkBtn from "../../../../../common/btns/MPAD/MPAD.LinkBtn";
-import MPADLinkInput from "../../../../../common/inputs/MP/MPAD.LinkInput";
-import CloseIcon from "@mui/icons-material/Close";
+import MPADLinkInput from "../../../../../common/inputs/MP/MPAD.Input";
 import Tags from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPAD.styles";
 import { IPropsMPAD } from "./MPAD.types";
 
 export default function MyPageADPresenter(props: IPropsMPAD) {
   return (
-    <S.Outline>
+    <S.Outline onSubmit={props.handleSubmit(props.onClickSubmit)}>
       <S.PageName>{props.UserInfo?.UserDisplayName}님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
@@ -46,7 +44,13 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
       <S.Section>
         <S.SectionInfo>사업체 및 상품 간단 소개글</S.SectionInfo>
         <S.DivideLine></S.DivideLine>
-        <S.SectionInfoText>리액트 퀼 사용 예정</S.SectionInfoText>
+        <S.SectionInfoText>
+          <MPADLinkInput
+            register={props.register}
+            registerName={"Link"}
+            label={"소개글을 입력하세요"}
+          />
+        </S.SectionInfoText>
         <S.DivideLine></S.DivideLine>
       </S.Section>
 
@@ -54,17 +58,17 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
         <S.LinkInfo>회사,제품 관련 링크</S.LinkInfo>
         <S.DivideLine></S.DivideLine>
         <S.LinkInfoText>
-          {props.Link &&
-            props.Link.map((el: any, index: any) => (
-              <S.MPADLinkInputWrapper key={index}>
-                <MPADLinkInput />
-                <CloseIcon onClick={props.onClickDeleteInputs}></CloseIcon>
-              </S.MPADLinkInputWrapper>
-            ))}
-          <MPADLinkBtn onClick={props.onClickMakeInputs} />
+          <MPADLinkInput
+            register={props.register}
+            registerName={"SNSLink"}
+            label={"회사, 제품관련 내용을 입력하세요"}
+          ></MPADLinkInput>
         </S.LinkInfoText>
 
         <S.DivideLine></S.DivideLine>
+        <button type="submit" style={{ width: 1150 }}>
+          변경사항 저장
+        </button>
       </S.LinkWrapper>
     </S.Outline>
   );
