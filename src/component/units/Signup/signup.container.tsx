@@ -74,7 +74,7 @@ export default function SignupContainer() {
   const onClickSignUp = async (data: any) => {
     // 인플루언서 광고주 차이로 카테고리 예외처리.
     if (value !== "인플루언서") {
-      signIn(
+      await signIn(
         data.nickName,
         data.email,
         data.password,
@@ -83,10 +83,11 @@ export default function SignupContainer() {
         Cate,
         value
       );
-      const url = Upload(file, data.email);
+      const url = await Upload(file, data.email);
       console.log(url);
+      router.push("/login");
     } else {
-      signIn(
+      await signIn(
         data.nickName,
         data.email,
         data.password,
@@ -95,10 +96,10 @@ export default function SignupContainer() {
         Cate,
         value
       );
-      const url = Upload(file, data.email);
+      const url = await Upload(file, data.email);
       console.log(url);
+      router.push("/login");
     }
-    router.push("/login");
   };
 
   const imgRef = useRef();

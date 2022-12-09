@@ -3,17 +3,14 @@ import Tags from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPADRead.styles";
 
 export default function MPADReadPresenter(props: any) {
+  const MpData = JSON.parse(localStorage.getItem("userMpData"));
   return (
     <S.Outline>
-      <button onClick={props.onClickChangePage}>
-        {/* (파이어베이스 적용시 제거) */}
-        변경
-      </button>
-      <S.PageName>AD(Read)님의 마이페이지</S.PageName>
+      <S.PageName>{MpData.displayName}님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={MpData.profileImg ? MpData.profileImg : "/Profile.png"}
             alt="사용자 기본이미지"
             width="300"
             height="200"
@@ -27,17 +24,12 @@ export default function MPADReadPresenter(props: any) {
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : ㅁㅁㅁ@ㅁㅁㅁㅁㅁ.ㅁㅁㅁ</S.InfoText>
+                <S.InfoText>이메일 : {MpData.email}</S.InfoText>
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags></Tags>
+                  <Tags UserCateGory={MpData.UsedSNS}></Tags>
                 </S.InfoText>
-              </S.InfoTextWrapper>
-            </S.InfoSectionWrapper>
-            <S.InfoSectionWrapper>
-              <S.InfoTextWrapper>
-                <S.InfoText>업체종류 : ㅁㅁㅁㅁ</S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
           </S.InfoSection>
@@ -48,18 +40,14 @@ export default function MPADReadPresenter(props: any) {
         <S.SectionInfo>사업체 및 상품 간단 소개글</S.SectionInfo>
         <S.DivideLine></S.DivideLine>
         <S.SectionInfoText>
-          Sunt laboris veniam culpa ipsum sint ipsum cillum sint duis deserunt
-          ex magna consequat.Sunt laboris veniam culpa ipsum sint ipsum cillum
-          sint duis deserunt ex magna consequat.Sunt laboris veniam culpa ipsum
-          sint ipsum cillum sint duis deserunt ex magna consequat.Sunt laboris
-          veniam culpa ipsum sint ipsum cillum sint duis deserunt ex magna
-          consequat.Sunt laboris veniam culpa ipsum sint ipsum cillum sint duis
-          deserunt ex magna consequat.
+          {MpData.Link === "" ? "소개글이 없습니다." : MpData.Link}
         </S.SectionInfoText>
         <S.DivideLine></S.DivideLine>
         <S.LinkInfo>회사, 제품 관련 링크</S.LinkInfo>
         <S.DivideLine></S.DivideLine>
-        <S.LinkInfoText>LinkHere</S.LinkInfoText>
+        <S.LinkInfoText>
+          {MpData.SNSLink === "" ? "링크가 없습니다." : MpData.SNSLink}
+        </S.LinkInfoText>
       </S.Section>
     </S.Outline>
   );

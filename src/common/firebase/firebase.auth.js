@@ -4,7 +4,7 @@ import { auth, db } from "./firebase.config";
 
 export default function useSignin() {
   /** displayName, email, password, UsedSNS, SNSLink, CheckCategory, value, url */
-  const signIn = (
+  const signIn = async (
     displayName,
     email,
     password,
