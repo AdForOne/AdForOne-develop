@@ -19,11 +19,7 @@ export default function SearchUI(props: ISearch) {
         <SC.UserChatWrapper onClick={props.onClickSelect}>
           {/* 온클릭 함수 작성필요. 유저 정보가 Search창에 나올시 채팅목록을 불러와야함 */}
           <SC.UsersImg
-            src={
-              props.user.profileImg
-                ? props.user.profileImg
-                : "https://source.unsplash.com/random"
-            }
+            src={props.user.profileImg ? props.user.profileImg : "/Profile.png"}
             alt=""
           />
           <SC.UserChatInfo>

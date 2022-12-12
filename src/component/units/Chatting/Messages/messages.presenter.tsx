@@ -12,6 +12,7 @@ export default function MessagesUI(props: any) {
           id={m.senderId}
           time={m.date.toDate()}
           profileImg={m.profileImg}
+          img={m.img}
         />
       ))}
     </MS.Wrapper>

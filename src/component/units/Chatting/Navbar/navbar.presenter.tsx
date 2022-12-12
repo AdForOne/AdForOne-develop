@@ -10,9 +10,7 @@ export default function NavBarUI(props: IUserName) {
       <NB.User>
         {/* 이미지 수정해야함 */}
         <NB.UserIMG
-          src={
-            props.UserIMG ? props.UserIMG : "https://source.unsplash.com/random"
-          }
+          src={props.UserIMG ? props.UserIMG : "/Profile.png"}
           alt=""
         ></NB.UserIMG>
         {props.UserName}

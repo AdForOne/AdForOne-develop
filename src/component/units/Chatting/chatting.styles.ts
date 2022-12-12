@@ -12,7 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   border: 1px solid white;
   border-radius: 10px;
-  width: 70%;
+  width: 90%;
   height: 80%;
 `;
 
