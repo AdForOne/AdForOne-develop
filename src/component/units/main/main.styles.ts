@@ -48,3 +48,16 @@ export const BtnBox = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const SearchInput = styled.input`
+  text-align: center;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #2f2d52;
+  font-size: 18px;
+  background-color: white;
+  &::placeholder {
+    color: lightgray;
+  }
+`;

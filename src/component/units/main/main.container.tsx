@@ -14,7 +14,9 @@ export default function MainContainer() {
   const MoveBoardListBtn = () => {
     router.push("./board/list");
   };
-  const arr = [];
+  // type Error
+  const arr: any[] = [];
+
   const Test = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
@@ -29,7 +31,7 @@ export default function MainContainer() {
   }
 
   const onClickMoveToPage = async (event: any) => {
-    router.push(`myPage/detail/${event.currentTarget.id}`);
+    router.push(`/myPage/detail/${event.currentTarget.id}`);
   };
 
   return (
@@ -39,6 +41,7 @@ export default function MainContainer() {
       Data={Data}
       onClickMoveToPage={onClickMoveToPage}
       arr={arr}
+      router={router.asPath}
     />
   );
 }

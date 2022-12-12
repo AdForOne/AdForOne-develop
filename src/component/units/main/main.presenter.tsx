@@ -1,13 +1,16 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import CardContainer from "../../../common/card/card";
-import Category from "../../../common/category/category";
 import * as MS from "./main.styles";
 
 export default function MainPresenter(props: any) {
   return (
     <MS.Wrapper>
       {/* 메인광고 및 사이트 소개 */}
-      <MS.TestImg src="https://source.unsplash.com/random" />
+      {props.router === "/main" ? (
+        <MS.TestImg src="https://source.unsplash.com/random" />
+      ) : (
+        <MS.SearchInput type="text" placeholder="인플루언서 검색하기" />
+      )}
 
       {/* 카테고리 div */}
       {/* 베스트 카테고리만 노출 */}
