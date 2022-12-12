@@ -11,11 +11,13 @@ export interface IUserInfo {
   UserSNSLink: string | null;
   UserCheckedCategory: string | null;
   UserDisplayName: string | null;
+  UserProfileImg: string | null;
 }
 
 export interface IDataForm {
   Link: string | null;
   SNSLink: string | null;
+  CheckCategory: string | null;
 }
 
 export interface IPropsMPAD {

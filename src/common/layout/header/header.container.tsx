@@ -12,7 +12,7 @@ export default function HeaderContainer() {
   const [isLogin, setIsLogin] = useState(false);
   const [UserName, setUserName] = useState("");
   const router = useRouter();
-  // recoil State
+
   const onClickMoveToPage = (event: MouseEvent<HTMLImageElement>) => {
     const href = event.currentTarget.id;
     router.push(href);
@@ -22,7 +22,6 @@ export default function HeaderContainer() {
   const onClickLogOut = () => {
     signOut(auth)
       .then(() => {
-        // setAccessToken("");
         sessionStorage.clear();
         router.push("/login");
         alert("로그아웃 되었습니다.");

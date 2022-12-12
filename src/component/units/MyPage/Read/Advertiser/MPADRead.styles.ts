@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const DivideLine = styled.div`
   width: 100%;
   border-top: 2px solid #c4c4c4;
-  margin: 15px 0px;
+  margin: 10px 0px;
 `;
 export const Outline = styled.div`
   background-color: #fff;
@@ -12,9 +12,9 @@ export const Outline = styled.div`
 `;
 export const PageName = styled.div`
   width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #18a0fb;
 `;
 // 헤더 스타일
 export const Header = styled.header`
@@ -27,10 +27,24 @@ export const Header = styled.header`
 export const HeaderImg = styled.div``;
 export const HeaderInfo = styled.div`
   width: 72%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+`;
+export const HeaderInfoWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const BtnWrapper = styled.div`
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 export const InfoHead = styled.div`
@@ -58,13 +72,15 @@ export const InfoTextWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const InfoText = styled.div`
+export const InfoLabel = styled.div`
   font-size: 19px;
   font-weight: 700;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
+
+export const InfoText = styled.div``;
 
 export const Section = styled.section`
   width: 100%;
@@ -77,15 +93,18 @@ export const Section = styled.section`
 export const SectionInfo = styled.div`
   font-size: 24px;
   font-weight: 700;
+  color: #18a0fb;
 `;
 export const SectionInfoText = styled.div`
   font-size: 19px;
   font-weight: 500;
+  margin-bottom: 50px;
 `;
 
 export const LinkInfo = styled.div`
   font-size: 24px;
   font-weight: 700;
+  color: #18a0fb;
 `;
 
 export const LinkInfoText = styled.div`

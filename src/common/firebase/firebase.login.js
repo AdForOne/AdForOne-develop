@@ -32,6 +32,8 @@ export default function useLogin() {
           sessionStorage.setItem("userCheckCategory", UserInfo.CheckCategory);
           sessionStorage.setItem("userValue", UserInfo.value);
           sessionStorage.setItem("profileImg", UserInfo.profileImg);
+          sessionStorage.setItem("Link", UserInfo.Link);
+          sessionStorage.setItem("ServiceMain", UserInfo.ServiceMain);
         } else {
           // doc.data() will be undefined in this case
         }

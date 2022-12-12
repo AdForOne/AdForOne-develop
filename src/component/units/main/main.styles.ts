@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 100%;
+`;
 
 export const TestImg = styled.img`
   width: 100%;
-  height: 100vh;
+  height: 50vh;
 `;
 
 export const FindText = styled.p`
@@ -18,19 +20,20 @@ export const Text = styled.p`
 `;
 
 export const CategoryWrapper = styled.div`
-  margin-top: 5rem;
-  margin-bottom: 10rem;
-`;
-
-export const CategoryGridBox = styled.div`
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(9, 1fr);
-`;
-
-export const CategoryBox = styled.div`
+  width: 100%;
+  height: 150px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const Bar = styled.div`
+  height: 32px;
+  font-weight: 700;
+  font-size: 20px;
+  border-left: 3px solid #bdbdbd;
+  margin: 0px 10px 0px 10px;
 `;
 
 export const CardGridBox = styled.div`
