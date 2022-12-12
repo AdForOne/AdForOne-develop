@@ -17,7 +17,7 @@ export default function ChatListUI(props: IChatList) {
               src={
                 el[1].userInfo?.profileImg
                   ? el[1].userInfo.profileImg
-                  : "https://source.unsplash.com/random"
+                  : "/Profile.png"
               }
               alt=""
             />

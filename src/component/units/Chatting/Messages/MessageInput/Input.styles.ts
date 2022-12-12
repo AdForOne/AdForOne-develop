@@ -21,4 +21,8 @@ export const MessageInput = styled.input`
   }
 `;
 
-export const MessageWrapper = styled.div``;
+export const MessageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;

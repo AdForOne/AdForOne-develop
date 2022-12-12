@@ -17,9 +17,10 @@ export const MessageInfo = styled.div`
 `;
 
 export const MessageContext = styled.div`
-  max-width: 80%;
+  width: 75%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   max-width: max-content;
 `;
@@ -27,7 +28,7 @@ export const MessageContext = styled.div`
 export const MessageText = styled.p`
   background-color: ${(props: any) =>
     props.id === sessionStorage.uid ? "#8da4f1" : "white"};
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: ${(props: any) =>
     props.id === sessionStorage.uid
       ? "10px 0px 10px 10px"
@@ -39,4 +40,9 @@ export const UserImg = styled.img`
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+`;
+
+export const ChatIMG = styled.img`
+  width: 100%;
+  height: 100%;
 `;

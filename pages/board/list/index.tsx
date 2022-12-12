@@ -1,5 +1,5 @@
-import BoardListContainer from "../../../src/component/units/Board/list/board.container";
+import MainContainer from "../../../src/component/units/main/main.container";
 
 export default function BoardListPage() {
-  return <BoardListContainer />;
+  return <MainContainer />;
 }
