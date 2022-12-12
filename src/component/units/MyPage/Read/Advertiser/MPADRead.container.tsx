@@ -1,14 +1,11 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
 import { db } from "../../../../../common/firebase/firebase.config";
-import { ChangeAdIf } from "../../../../../common/recoil/MP";
 import MPADReadPresenter from "./MPADRead.presenter";
 
 export default function MPADReadContainer() {
   const router = useRouter();
-  const [isAd, setIsAd] = useRecoilState(ChangeAdIf);
   const [render, setRender] = useState(false);
 
   const fetchPage = async () => {
@@ -35,11 +32,11 @@ export default function MPADReadContainer() {
     fetchPage();
   });
 
-  const onClickChangePage = () => {
-    console.log(isAd);
-    setIsAd((prev) => !prev);
+  const onClickMoveToEdit = () => {
+    router.push(`/myPage/edit`);
   };
+
   if (render) {
-    return <MPADReadPresenter onClickChangePage={onClickChangePage} />;
+    return <MPADReadPresenter onClickMoveToEdit={onClickMoveToEdit} />;
   }
 }

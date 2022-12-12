@@ -7,33 +7,28 @@ export default function MainPresenter(props: any) {
   return (
     <MS.Wrapper>
       {/* 메인광고 및 사이트 소개 */}
-      <MS.TestImg src="Profile.png" />
+      <MS.TestImg src="https://source.unsplash.com/random" />
 
       {/* 카테고리 div */}
       {/* 베스트 카테고리만 노출 */}
       <MS.CategoryWrapper>
         <MS.FindText>FIND</MS.FindText>
+        <MS.Bar></MS.Bar>
         <MS.Text>빠르게 인플루언서를 찾아보세요!</MS.Text>
-        <MS.CategoryGridBox>
-          {props.DataCard.map((el: any, index: number) => (
-            <MS.CategoryBox key={index}>
-              <Category />
-            </MS.CategoryBox>
-          ))}
-        </MS.CategoryGridBox>
       </MS.CategoryWrapper>
 
       {/* 카드 div */}
-      {/* 무한스크롤 적용시키기? */}
       <MS.CardGridBox>
         {props.Data.map((el: any, index: number) => (
           <CardContainer
             Link={el.Link}
             displayName={el.displayName}
             CheckCategory={el.CheckCategory}
+            UsedSNS={el.UsedSNS}
             id={el.email}
             onClickMoveToPage={props.onClickMoveToPage}
             profileImg={el.profileImg}
+            value={el.value}
           />
         ))}
       </MS.CardGridBox>

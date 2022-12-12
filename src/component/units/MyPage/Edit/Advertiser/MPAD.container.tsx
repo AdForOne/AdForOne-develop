@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import usePage from "../../../../../common/firebase/firebase.myPage";
@@ -6,6 +7,7 @@ import MyPageADPresenter from "./MPAD.presenter";
 import { IDataForm } from "./MPAD.types";
 
 export default function MyPageADContainer() {
+  const router = useRouter();
   const isSrr = useIsSsr();
   const [link, setLink] = useState([0]);
   const { handleSubmit, register } = useForm();
@@ -17,10 +19,23 @@ export default function MyPageADContainer() {
     UserSNSLink: sessionStorage.getItem("userSNSLink"),
     UserCheckedCategory: sessionStorage.getItem("userCheckCategory"),
     UserDisplayName: sessionStorage.getItem("displayName"),
+    UserProfileImg: sessionStorage.getItem("profileImg"),
   };
 
   const onClickSubmit = (data: IDataForm) => {
-    createMyPageAD(UserInfo.UserEmail, data.Link, data.SNSLink);
+    if (!data.Link || !data.SNSLink) {
+      alert("내용을 입력하세요!");
+      return;
+    }
+    createMyPageAD(
+      UserInfo.UserEmail,
+      data.Link,
+      data.SNSLink,
+      data.CheckCategory
+    );
+    router.push(`/myPage/detail/${UserInfo.UserEmail}`);
+    sessionStorage.setItem("Link", data.Link);
+    sessionStorage.setItem("userSNSLink", data.SNSLink);
   };
 
   return (

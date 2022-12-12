@@ -8,12 +8,13 @@ interface IPropsLinkInput {
   default: string | null;
 }
 
-export default function MPADLinkInput(props: IPropsLinkInput) {
-  const MPADLinkInput = styled(TextField)`
+export default function MPADSNSLinkInput(props: IPropsLinkInput) {
+  const MPADSNSLinkInput = styled(TextField)`
     width: 100%;
   `;
   return (
-    <MPADLinkInput
+    <MPADSNSLinkInput
+      // hiddenLabel
       label={props.label}
       defaultValue={props.default}
       variant="outlined"

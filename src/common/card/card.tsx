@@ -32,9 +32,15 @@ export default function CardContainer(props: any) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" disableElevation size="small">
-            {props.CheckCategory}
-          </Button>
+          {props.value !== "인플루언서" ? (
+            <Button variant="contained" disableElevation size="small">
+              {props.UsedSNS}
+            </Button>
+          ) : (
+            <Button variant="contained" disableElevation size="small">
+              {props.CheckCategory}
+            </Button>
+          )}
         </CardActions>
       </Card>
     </Wrapper>

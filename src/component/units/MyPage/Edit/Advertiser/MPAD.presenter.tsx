@@ -2,6 +2,8 @@ import Image from "next/image";
 import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
 import MPADChatBtn from "../../../../../common/btns/MPAD/MPAD.ChatBtn";
 import MPADLinkInput from "../../../../../common/inputs/MP/MPAD.Input";
+import MPADSNSLinkInput from "../../../../../common/inputs/MP/MPAD.SNSLinkInput";
+import { UserInfo } from "../../../../../common/layout/header/header.styles";
 import Tags from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPAD.styles";
 import { IPropsMPAD } from "./MPAD.types";
@@ -12,11 +14,16 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
       <S.PageName>{props.UserInfo?.UserDisplayName}님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              props.UserInfo?.UserProfileImg
+                ? props.UserInfo?.UserProfileImg
+                : "/Profile.png"
+            }
             alt="사용자 기본이미지"
             width="300"
             height="200"
+            style={{ borderRadius: 5, cursor: "pointer" }}
           />
         </S.HeaderImg>
         <S.HeaderInfo>
@@ -29,11 +36,15 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>이메일 : {props.UserInfo?.UserEmail}</S.InfoText>
-                <MPChangeBtn />
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags UserCateGory={props.UserInfo?.UsedSNS}></Tags>
+                  {/* 수정버튼을 누르면 Tags 일반 상태일땐 단순 텍스트 */}
+                  <Tags
+                    UserCateGory={props.UserInfo?.UsedSNS}
+                    register={props.register}
+                    registerName={"CheckCategory"}
+                  ></Tags>
                 </S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
@@ -49,6 +60,11 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
             register={props.register}
             registerName={"Link"}
             label={"소개글을 입력하세요"}
+            default={
+              sessionStorage.getItem("Link")
+                ? sessionStorage.getItem("Link")
+                : ""
+            }
           />
         </S.SectionInfoText>
         <S.DivideLine></S.DivideLine>
@@ -58,11 +74,16 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
         <S.LinkInfo>회사,제품 관련 링크</S.LinkInfo>
         <S.DivideLine></S.DivideLine>
         <S.LinkInfoText>
-          <MPADLinkInput
+          <MPADSNSLinkInput
             register={props.register}
             registerName={"SNSLink"}
             label={"회사, 제품관련 내용을 입력하세요"}
-          ></MPADLinkInput>
+            default={
+              sessionStorage.getItem("userSNSLink")
+                ? sessionStorage.getItem("userSNSLink")
+                : ""
+            }
+          ></MPADSNSLinkInput>
         </S.LinkInfoText>
 
         <S.DivideLine></S.DivideLine>
