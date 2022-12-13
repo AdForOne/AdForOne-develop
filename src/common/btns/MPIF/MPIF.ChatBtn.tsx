@@ -3,7 +3,9 @@ import { styled } from "@mui/material/styles";
 import { useRouter } from "next/router";
 
 export default function MPIFChatBtn() {
-  const MPIFChatBtn = styled(Button)``;
+  const MPIFChatBtn = styled(Button)`
+    width: 100px;
+  `;
 
   const router = useRouter();
   const onClickMoveChat = () => {

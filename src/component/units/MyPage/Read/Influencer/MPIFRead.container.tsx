@@ -14,32 +14,39 @@ export default function MPIFReadContainer() {
   const fetchPage = async () => {
     const UserInfo = doc(db, "users", `${router.query?.email}`);
     const UserSnap = await getDoc(UserInfo);
-    const userMpData = {
-      Link: UserSnap.data()?.Link,
-      ServiceMain: UserSnap.data()?.ServiceMain,
-      email: UserSnap.data()?.email,
-      CheckCategory: UserSnap.data()?.CheckCategory,
-      SNSLink: UserSnap.data()?.SNSLink,
-      UsedSNS: UserSnap.data()?.UsedSNS,
-      value: UserSnap.data()?.value,
-      basicPrice: UserSnap.data()?.basicPrice,
-      basicText: UserSnap.data()?.basicText,
-      expertPrice: UserSnap.data()?.expertPrice,
-      expertText: UserSnap.data()?.expertText,
-      proPrice: UserSnap.data()?.LiproPrice,
-      proText: UserSnap.data()?.proText,
-      profileImg: UserSnap.data()?.profileImg,
-    };
-    localStorage.clear();
-    localStorage.setItem("userMpData", JSON.stringify(userMpData));
-    console.log(UserSnap.data());
-    setRender(true);
+
+    if (!render) {
+      /** 메인, 리스트에서 카드 클릭시 LocalStorage에 저장하는 정보 */
+      const userMpData = {
+        displayName: UserSnap.data()?.displayName,
+        Link: UserSnap.data()?.Link,
+        ServiceMain: UserSnap.data()?.ServiceMain,
+        email: UserSnap.data()?.email,
+        CheckCategory: UserSnap.data()?.CheckCategory,
+        SNSLink: UserSnap.data()?.SNSLink,
+        UsedSNS: UserSnap.data()?.UsedSNS,
+        value: UserSnap.data()?.value,
+        basicPrice: UserSnap.data()?.basicPrice,
+        basicText: UserSnap.data()?.basicText,
+        expertPrice: UserSnap.data()?.expertPrice,
+        expertText: UserSnap.data()?.expertText,
+        proPrice: UserSnap.data()?.LiproPrice,
+        proText: UserSnap.data()?.proText,
+        profileImg: UserSnap.data()?.profileImg,
+      };
+      localStorage.clear();
+      localStorage.setItem("userMpData", JSON.stringify(userMpData));
+      setRender(true);
+    }
   };
   useEffect(() => {
     fetchPage();
-  });
+  }, []);
 
+  const onClickMoveToEdit = () => {
+    router.push(`/myPage/edit`);
+  };
   if (render) {
-    return <MPIFReadPresenter />;
+    return <MPIFReadPresenter onClickMoveToEdit={onClickMoveToEdit} />;
   }
 }

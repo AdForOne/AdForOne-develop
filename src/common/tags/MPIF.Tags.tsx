@@ -17,7 +17,7 @@ export default function Tags(props: IPropsTags) {
   ];
 
   return (
-    <Stack spacing={3} sx={{ width: 370, height: 35, marginTop: -3 }}>
+    <Stack spacing={3} sx={{ width: 370, height: 35, marginTop: -0.5 }}>
       <Autocomplete
         multiple
         freeSolo
@@ -33,7 +33,7 @@ export default function Tags(props: IPropsTags) {
           <TextField
             {...params}
             variant="standard"
-            label="관심 SNS"
+            label="컨텐츠 종류"
             placeholder="관심있는 컨텐츠를 선택해 주세요!"
           />
         )}
