@@ -49,15 +49,28 @@ export const BtnBox = styled.div`
   justify-content: center;
 `;
 
-export const SearchInput = styled.input`
-  text-align: center;
+export const SearchWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  border: none;
-  outline: none;
-  color: #2f2d52;
-  font-size: 18px;
-  background-color: white;
-  &::placeholder {
-    color: lightgray;
-  }
+  margin-bottom: 20px;
+`;
+export const SearchInput = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const SearchCardWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px 30px 0px;
+`;
+
+export const SearchErr = styled.p`
+  text-align: center;
+  color: black;
+  font-size: 28px;
+  font-weight: 600;
 `;
