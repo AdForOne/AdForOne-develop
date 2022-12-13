@@ -25,13 +25,12 @@ export default function MPIFPriceCard(props: IPropsMPIFPriceCard) {
             {props.cate}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.price}
+            {props.price ? props.price : "가격 정보가 없습니다."}
           </Typography>
         </CardContent>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            서비스 설명
-            {props.text}
+            {props.text ? props.text : "서비스 설명이 없습니다."}
           </Typography>
         </CardContent>
       </Card>

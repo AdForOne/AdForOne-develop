@@ -39,7 +39,6 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
                     data={props.UserInfo.UserEmail}
                   />
                 </S.InfoText>
-                <MPChangeBtn />
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>

@@ -1,9 +1,17 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export default function MPChangeBtn() {
+interface IPropsMPChangeBtn {
+  onClick: () => void;
+}
+
+export default function MPChangeBtn(props: IPropsMPChangeBtn) {
   const MPChangeBtn = styled(Button)`
     width: 95px;
   `;
-  return <MPChangeBtn variant="contained">변경</MPChangeBtn>;
+  return (
+    <MPChangeBtn variant="contained" onClick={props.onClick}>
+      수정
+    </MPChangeBtn>
+  );
 }
