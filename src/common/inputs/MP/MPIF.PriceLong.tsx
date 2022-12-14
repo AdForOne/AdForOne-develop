@@ -6,6 +6,7 @@ interface IPropsInputLong {
   label: string;
   register: UseFormRegister<FieldValues>;
   registerName: string;
+  default: string | null;
 }
 /** label = 인풋안에 들어가는 문자열 */
 export default function MPIFPriceInputLong(props: IPropsInputLong) {
@@ -20,6 +21,7 @@ export default function MPIFPriceInputLong(props: IPropsInputLong) {
       label={props.label}
       variant="outlined"
       {...props.register(props.registerName)}
+      defaultValue={props.default}
     ></MPIFPriceInputLong>
   );
 }

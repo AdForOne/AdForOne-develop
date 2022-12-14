@@ -6,6 +6,7 @@ interface IPropsInputShort {
   label: string;
   register: UseFormRegister<FieldValues>;
   registerName: string;
+  default: string | null;
 }
 /** label = 인풋안에 들어가는 문자열 */
 export default function MPIFPriceInputShort(props: IPropsInputShort) {
@@ -14,6 +15,7 @@ export default function MPIFPriceInputShort(props: IPropsInputShort) {
     <MPIFPriceInputShort
       label={props.label}
       variant="outlined"
+      defaultValue={props.default}
       {...props.register(props.registerName)}
     ></MPIFPriceInputShort>
   );

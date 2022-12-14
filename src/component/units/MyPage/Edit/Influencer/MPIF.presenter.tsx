@@ -1,7 +1,8 @@
 import Image from "next/image";
 import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
 import MPIFChatBtn from "../../../../../common/btns/MPIF/MPIF.ChatBtn";
-import Tags from "../../../../../common/tags/MPIF.Tags";
+import TagsCate from "../../../../../common/tags/MPIF.Tags";
+import TagsSNS from "../../../../../common/tags/MPAD.Tags";
 import * as S from "./MPIF.styles";
 import MPIFPriceInputShort from "../../../../../common/inputs/MP/MPIF.PriceShort";
 import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
@@ -15,18 +16,23 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
     <S.Outline onSubmit={props.handleSubmit(props.onClickSavePage)}>
       <S.Header>
         <S.HeaderImg>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              props.UserInfo.UserProfile
+                ? props.UserInfo.UserProfile
+                : "/Profile.png"
+            }
             alt="기본 이미지"
             width="300"
             height="200"
-          ></Image>
+            style={{ borderRadius: 5 }}
+          ></img>
         </S.HeaderImg>
         <S.HeaderInfo>
           <S.InfoHead>
-            <S.InfoText>
+            <S.PageName>
               {props.UserInfo.UserDisplayName}님의 마이페이지
-            </S.InfoText>
+            </S.PageName>
             <MPIFChatBtn />
           </S.InfoHead>
           <S.DivideLine></S.DivideLine>
@@ -34,53 +40,60 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <MPIFChangeInputs
-                    text={"이메일을 입력 해 주세요"}
-                    data={props.UserInfo.UserEmail}
-                  />
+                  <S.InfoLabel>이메일</S.InfoLabel>
+                  <S.InfoText>{props.UserInfo.UserEmail}</S.InfoText>
                 </S.InfoText>
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags
+                  <TagsCate
                     UserCateGory={props.UserInfo.UserCheckedCategory}
-                  ></Tags>
+                    register={props.register}
+                    registerName={"CheckCategory"}
+                  ></TagsCate>
                 </S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <MPIFChangeInputs
-                    text={"SNS종류를 입력 해 주세요"}
-                    data={props.UserInfo.UsedSNS}
+                  <TagsSNS
+                    UserCateGory={props.UserInfo.UsedSNS}
+                    register={props.register}
+                    registerName={"UsedSNS"}
                   />
                 </S.InfoText>
-                <MPChangeBtn></MPChangeBtn>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
           </S.InfoSection>
           <S.InfoText></S.InfoText>
         </S.HeaderInfo>
       </S.Header>
-      <S.DivideLine></S.DivideLine>
       <S.Section>
         <S.SectionInfo>
-          <MPIFLinkInput register={props.register} registerName="Link" />
+          <S.PageName>간단 소개글</S.PageName>
+          <S.DivideLine></S.DivideLine>
+          <MPIFLinkInput
+            label="소개글을 입력해주세요"
+            register={props.register}
+            registerName="Link"
+            default={props.UserInfo.UserLink}
+          />
         </S.SectionInfo>
+        <S.PageName>서비스 설명</S.PageName>
         <S.DivideLine></S.DivideLine>
-        <h1>서비스 설명</h1>
         <S.SectionService>
           <MPIFQuill
             register={props.register}
             registerName="ServiceMain"
             onChange={props.onChangeContents}
+            default={props.UserInfo.UserServiceMain}
           />
         </S.SectionService>
       </S.Section>
-      <S.DivideLine></S.DivideLine>
-      <h1>가격정보</h1>
       <S.PriceWrapper>
+        <S.PageName>가격정보</S.PageName>
+        <S.DivideLine></S.DivideLine>
         <S.PriceBox>
           <Image
             src="/MyPage/DefaultImg.png"
@@ -93,11 +106,13 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
               label="베이직(원)"
               register={props.register}
               registerName={"basicPrice"}
+              default={props.UserInfo.basicPrice}
             />
             <MPIFPriceInputLong
               label="서비스 한 줄 설명"
               register={props.register}
               registerName={"basicText"}
+              default={props.UserInfo.basicText}
             />
           </S.PriceInfo>
         </S.PriceBox>
@@ -113,11 +128,13 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
               label="익스퍼트(원)"
               register={props.register}
               registerName={"expertPrice"}
+              default={props.UserInfo.expertPrice}
             />
             <MPIFPriceInputLong
               label="서비스 한 줄 설명"
               register={props.register}
               registerName={"expertText"}
+              default={props.UserInfo.expertText}
             />
           </S.PriceInfo>
         </S.PriceBox>
@@ -133,11 +150,13 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
               label="프로(원)"
               register={props.register}
               registerName={"proPrice"}
+              default={props.UserInfo.proPrice}
             />
             <MPIFPriceInputLong
               label="서비스 한 줄 설명"
               register={props.register}
               registerName={"proText"}
+              default={props.UserInfo.proText}
             />
           </S.PriceInfo>
         </S.PriceBox>

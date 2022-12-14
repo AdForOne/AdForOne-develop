@@ -34,6 +34,12 @@ export default function useLogin() {
           sessionStorage.setItem("profileImg", UserInfo.profileImg);
           sessionStorage.setItem("Link", UserInfo.Link);
           sessionStorage.setItem("ServiceMain", UserInfo.ServiceMain);
+          sessionStorage.setItem("basicPrice", UserInfo.basicPrice);
+          sessionStorage.setItem("basicText", UserInfo.basicText);
+          sessionStorage.setItem("expertPrice", UserInfo.expertPrice);
+          sessionStorage.setItem("expertText", UserInfo.expertText);
+          sessionStorage.setItem("proPrice", UserInfo.proPrice);
+          sessionStorage.setItem("proText", UserInfo.proText);
         } else {
           // doc.data() will be undefined in this case
         }

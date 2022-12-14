@@ -13,6 +13,8 @@ export default function usePage() {
     email,
     Link,
     ServiceMain,
+    CheckCategory,
+    UsedSNS,
     basicPrice,
     basicText,
     expertPrice,
@@ -24,6 +26,8 @@ export default function usePage() {
       const docRef = await updateDoc(doc(db, "users", email), {
         Link,
         ServiceMain,
+        CheckCategory,
+        UsedSNS,
         basicPrice,
         basicText,
         expertPrice,
@@ -31,6 +35,7 @@ export default function usePage() {
         proPrice,
         proText,
       });
+      sessionStorage.setItem();
     } catch (e) {
       console.error("Error adding document: ", e);
     }

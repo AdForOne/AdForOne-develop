@@ -18,6 +18,13 @@ export const Header = styled.header`
   align-items: flex-start;
 `;
 
+export const PageName = styled.div`
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  color: #18a0fb;
+`;
+
 export const HeaderImg = styled.div``;
 
 export const HeaderInfo = styled.div`
@@ -53,14 +60,14 @@ export const InfoTextWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const InfoText = styled.div`
-  width: 65%;
+export const InfoLabel = styled.div`
   font-size: 19px;
   font-weight: 700;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
+export const InfoText = styled.div``;
 export const InfoInputs = styled.input``;
 
 // 섹션 스타일
@@ -74,6 +81,7 @@ export const Section = styled.section`
 `;
 export const SectionInfo = styled.div`
   width: 100%;
+  padding-bottom: 50px;
 `;
 export const SectionInfoText = styled.div`
   font-size: 19px;
