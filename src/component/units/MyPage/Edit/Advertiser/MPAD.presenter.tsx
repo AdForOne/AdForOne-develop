@@ -11,7 +11,6 @@ import { IPropsMPAD } from "./MPAD.types";
 export default function MyPageADPresenter(props: IPropsMPAD) {
   return (
     <S.Outline onSubmit={props.handleSubmit(props.onClickSubmit)}>
-      <S.PageName>{props.UserInfo?.UserDisplayName}님의 마이페이지</S.PageName>
       <S.Header>
         <S.HeaderImg>
           <img
@@ -28,14 +27,20 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
         </S.HeaderImg>
         <S.HeaderInfo>
           <S.InfoHead>
-            <S.InfoText>사업체 이름, 상품이름</S.InfoText>
+            <S.PageName>
+              {props.UserInfo?.UserDisplayName}님의 마이페이지
+            </S.PageName>
+
             <MPADChatBtn />
           </S.InfoHead>
           <S.DivideLine></S.DivideLine>
           <S.InfoSection>
             <S.InfoSectionWrapper>
               <S.InfoTextWrapper>
-                <S.InfoText>이메일 : {props.UserInfo?.UserEmail}</S.InfoText>
+                <S.InfoText>
+                  <S.InfoLabel>이메일</S.InfoLabel>
+                  <S.InfoText>{props.UserInfo?.UserEmail}</S.InfoText>
+                </S.InfoText>
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
@@ -43,7 +48,7 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
                   <Tags
                     UserCateGory={props.UserInfo?.UsedSNS}
                     register={props.register}
-                    registerName={"CheckCategory"}
+                    registerName={"UsedSNS"}
                   ></Tags>
                 </S.InfoText>
               </S.InfoTextWrapper>
@@ -60,14 +65,9 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
             register={props.register}
             registerName={"Link"}
             label={"소개글을 입력하세요"}
-            default={
-              sessionStorage.getItem("Link")
-                ? sessionStorage.getItem("Link")
-                : ""
-            }
+            default={props.UserInfo?.UserLink ? props.UserInfo?.UserLink : ""}
           />
         </S.SectionInfoText>
-        <S.DivideLine></S.DivideLine>
       </S.Section>
 
       <S.LinkWrapper>
@@ -79,14 +79,11 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
             registerName={"SNSLink"}
             label={"회사, 제품관련 내용을 입력하세요"}
             default={
-              sessionStorage.getItem("userSNSLink")
-                ? sessionStorage.getItem("userSNSLink")
-                : ""
+              props.UserInfo?.UserSNSLink ? props.UserInfo?.UserSNSLink : ""
             }
           ></MPADSNSLinkInput>
         </S.LinkInfoText>
 
-        <S.DivideLine></S.DivideLine>
         <button type="submit" style={{ width: 1150 }}>
           변경사항 저장
         </button>
