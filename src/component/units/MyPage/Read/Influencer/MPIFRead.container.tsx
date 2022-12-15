@@ -30,7 +30,7 @@ export default function MPIFReadContainer() {
         basicText: UserSnap.data()?.basicText,
         expertPrice: UserSnap.data()?.expertPrice,
         expertText: UserSnap.data()?.expertText,
-        proPrice: UserSnap.data()?.LiproPrice,
+        proPrice: UserSnap.data()?.proPrice,
         proText: UserSnap.data()?.proText,
         profileImg: UserSnap.data()?.profileImg,
       };

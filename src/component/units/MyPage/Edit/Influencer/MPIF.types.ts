@@ -6,11 +6,20 @@ import {
 } from "react-hook-form";
 
 export interface IUserInfo {
+  UserProfile: string | null;
   UserEmail: string | null;
   UsedSNS: string | null;
   UserSNSLink: string | null;
   UserCheckedCategory: string | null;
   UserDisplayName: string | null;
+  UserLink: string | null;
+  UserServiceMain: string | null;
+  basicPrice: string | null;
+  basicText: string | null;
+  expertPrice: string | null;
+  expertText: string | null;
+  proPrice: string | null;
+  proText: string | null;
 }
 
 // export interface IFormData {

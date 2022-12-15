@@ -7,6 +7,7 @@ interface IPropsQuill {
   register: UseFormRegister<FieldValues>;
   registerName: string;
   onChange: (value: string) => void;
+  default: string | null;
 }
 
 export default function MPIFQuill(props: IPropsQuill) {
@@ -19,5 +20,10 @@ export default function MPIFQuill(props: IPropsQuill) {
     height: 350px;
   `;
 
-  return <ServiceText onChange={props.onChange}></ServiceText>;
+  return (
+    <ServiceText
+      onChange={props.onChange}
+      defaultValue={props.default ? props.default : ""}
+    ></ServiceText>
+  );
 }

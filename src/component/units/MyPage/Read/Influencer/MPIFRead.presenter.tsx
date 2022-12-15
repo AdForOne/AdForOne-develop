@@ -53,7 +53,12 @@ export default function MPIFReadPresenter(props: IPropsMPIFRead) {
               </S.InfoTextWrapper>
               <S.InfoTextWrapper>
                 <S.InfoText>
-                  <Tags UserCateGory={MpData.CheckCategory}></Tags>
+                  <S.InfoLabel>컨텐츠 종류</S.InfoLabel>
+                  <S.InfoText
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(`${MpData.CheckCategory}`),
+                    }}
+                  ></S.InfoText>
                 </S.InfoText>
               </S.InfoTextWrapper>
             </S.InfoSectionWrapper>
