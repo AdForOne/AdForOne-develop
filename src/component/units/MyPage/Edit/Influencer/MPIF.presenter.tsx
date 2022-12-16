@@ -9,7 +9,6 @@ import MPIFLinkInput from "../../../../../common/inputs/MP/MPIF.Input";
 import MPIFQuill from "../../../../../common/quill/mpif/mpif.quill";
 import MPIFPriceInputLong from "../../../../../common/inputs/MP/MPIF.PriceLong";
 import { IPropsMPIF } from "./MPIF.types";
-import MPIFChangeInputs from "../../../../../common/inputs/MP/MPIF.ChangeInputs";
 
 export default function MyPageIFPresenter(props: IPropsMPIF) {
   return (
@@ -18,7 +17,9 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
         <S.HeaderImg>
           <img
             src={
-              props.UserInfo.UserProfile
+              props.preview
+                ? props.preview
+                : props.UserInfo.UserProfile !== "undefined"
                 ? props.UserInfo.UserProfile
                 : "/Profile.png"
             }
@@ -26,7 +27,14 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             width="300"
             height="200"
             style={{ borderRadius: 5 }}
+            onClick={props.onClickRef}
           ></img>
+          <input
+            type="file"
+            hidden
+            ref={props.imgRef}
+            onChange={props.onClickPreview}
+          ></input>
         </S.HeaderImg>
         <S.HeaderInfo>
           <S.InfoHead>

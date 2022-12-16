@@ -1,3 +1,4 @@
+import { LegacyRef, MutableRefObject } from "react";
 import {
   FieldValues,
   SubmitHandler,
@@ -32,4 +33,9 @@ export interface IPropsMPIF {
   register: UseFormRegister<FieldValues>;
   onClickSavePage: SubmitHandler<FieldValues>;
   onChangeContents: (value: string) => void;
+  file: string | undefined;
+  preview: string | undefined;
+  imgRef: any;
+  onClickPreview: (event: any) => void;
+  onClickRef: () => void;
 }
