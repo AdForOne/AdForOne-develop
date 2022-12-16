@@ -3,6 +3,7 @@ export const DivideLine = styled.div`
   width: 100%;
   border-top: 2px solid #c4c4c4;
   margin: 5px 0px;
+  padding-bottom: 10px;
 `;
 export const Outline = styled.form`
   background-color: #fff;
@@ -11,9 +12,9 @@ export const Outline = styled.form`
 `;
 export const PageName = styled.div`
   width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #18a0fb;
 `;
 // 헤더 스타일
 export const Header = styled.header`
@@ -26,7 +27,6 @@ export const Header = styled.header`
 export const HeaderImg = styled.div``;
 export const HeaderInfo = styled.div`
   width: 72%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -57,14 +57,14 @@ export const InfoTextWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const InfoText = styled.div`
+export const InfoText = styled.div``;
+export const InfoLabel = styled.div`
   font-size: 19px;
   font-weight: 700;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
-
 // 섹션 스타일
 export const Section = styled.section`
   width: 100%;
@@ -75,13 +75,16 @@ export const Section = styled.section`
   align-items: flex-start;
 `;
 export const SectionInfo = styled.div`
+  width: 100%;
   font-size: 24px;
   font-weight: 700;
+  color: #18a0fb;
 `;
 export const SectionInfoText = styled.div`
   width: 100%;
   font-size: 19px;
   font-weight: 500;
+  padding-bottom: 30px;
 `;
 
 // 링크 스타일
@@ -94,8 +97,10 @@ export const LinkWrapper = styled.div`
   align-items: flex-start;
 `;
 export const LinkInfo = styled.div`
+  width: 100%;
   font-size: 24px;
   font-weight: 700;
+  color: #18a0fb;
 `;
 export const LinkInfoText = styled.div`
   width: 100%;
@@ -105,6 +110,7 @@ export const LinkInfoText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 `;
 
 export const MPADLinkInputWrapper = styled.div`

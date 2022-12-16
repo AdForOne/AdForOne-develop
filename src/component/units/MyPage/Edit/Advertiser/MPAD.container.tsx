@@ -20,20 +20,17 @@ export default function MyPageADContainer() {
     UserCheckedCategory: sessionStorage.getItem("userCheckCategory"),
     UserDisplayName: sessionStorage.getItem("displayName"),
     UserProfileImg: sessionStorage.getItem("profileImg"),
+    UserLink: sessionStorage.getItem("Link"),
   };
 
   const onClickSubmit = (data: IDataForm) => {
-    if (!data.Link || !data.SNSLink) {
+    if (!data.Link || !data.SNSLink || !data.UsedSNS) {
       alert("내용을 입력하세요!");
       return;
     }
-    createMyPageAD(
-      UserInfo.UserEmail,
-      data.Link,
-      data.SNSLink,
-      data.CheckCategory
-    );
+    createMyPageAD(UserInfo.UserEmail, data.Link, data.SNSLink, data.UsedSNS);
     router.push(`/myPage/detail/${UserInfo.UserEmail}`);
+    sessionStorage.setItem("userUsedSNS", data.UsedSNS);
     sessionStorage.setItem("Link", data.Link);
     sessionStorage.setItem("userSNSLink", data.SNSLink);
   };
