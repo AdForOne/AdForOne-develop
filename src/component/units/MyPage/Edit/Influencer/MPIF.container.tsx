@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { db } from "../../../../../common/firebase/firebase.config";
 import usePage from "../../../../../common/firebase/firebase.myPage";
@@ -24,10 +24,13 @@ export default function MyPageIFContainer() {
     UserServiceMain: sessionStorage.getItem("ServiceMain"),
     basicPrice: sessionStorage.getItem("basicPrice"),
     basicText: sessionStorage.getItem("basicText"),
+    basicImg: sessionStorage.getItem("basicImg"),
     expertPrice: sessionStorage.getItem("expertPrice"),
     expertText: sessionStorage.getItem("expertText"),
+    expertImg: sessionStorage.getItem("expertImg"),
     proPrice: sessionStorage.getItem("proPrice"),
     proText: sessionStorage.getItem("proText"),
+    proImg: sessionStorage.getItem("proImg"),
   };
 
   const { handleSubmit, register, setValue, trigger } = useForm();
@@ -37,12 +40,15 @@ export default function MyPageIFContainer() {
     trigger("ServiceMain");
   };
 
+  // 변경사항저장 버튼 클릭시 작동하는 함수 fireStore에 저장, Storage에 저장
   const onClickSavePage = async (data: any) => {
     // 내용 중 하나라도 빈 값일때 경고창과 함께 함수 중지
     await createMyPage(
       UserInfo.UserEmail,
       data.Link ? data.Link : UserInfo.UserLink,
-      data.ServiceMain ? data.ServiceMain : UserInfo.UserServiceMain,
+      data.ServiceMain
+        ? data.ServiceMain.toString()
+        : UserInfo.UserServiceMain?.toString(),
       data.CheckCategory ? data.CheckCategory : UserInfo.UserCheckedCategory,
       data.UsedSNS ? data.UsedSNS : UserInfo.UsedSNS,
       data.basicPrice ? data.basicPrice : UserInfo.basicPrice,
@@ -52,18 +58,44 @@ export default function MyPageIFContainer() {
       data.proPrice ? data.proPrice : UserInfo.proPrice,
       data.proText ? data.proPrice : UserInfo.proText
     );
-    const { Upload } = useStorage();
+    const { Upload, UploadPriceCardImg } = useStorage();
     /* 이미지 변경 후 변경사항 저장을 누르면 storage에 저장시키는 함수.
      이미지가 없이 upload되는 걸 방지하기 위해 조건문 포함 */
     if (file) {
-      const url = Upload(file, UserInfo.UserEmail);
-      console.log("이미지 업로드 완료");
+      const url = await Upload(file, UserInfo.UserEmail);
+    }
+    // 가격정보 이미지 프로세스
+    if (basicFile) {
+      const url = await UploadPriceCardImg(
+        basicFile,
+        UserInfo.UserEmail,
+        "basic"
+      );
+    }
+    if (expertFile) {
+      const url = await UploadPriceCardImg(
+        expertFile,
+        UserInfo.UserEmail,
+        "expert"
+      );
+    }
+    if (proFile) {
+      const url = await UploadPriceCardImg(proFile, UserInfo.UserEmail, "pro");
     }
 
-    sessionStorage.setItem("Link", data.Link);
-    sessionStorage.setItem("ServiceMain", data.ServiceMain);
-    sessionStorage.setItem("userCheckCategory", data.CheckCategory);
-    sessionStorage.setItem("userUsedSNS", data.UsedSNS);
+    sessionStorage.setItem("Link", data.Link ? data.Link : UserInfo.UserLink);
+    sessionStorage.setItem(
+      "ServiceMain",
+      data.ServiceMain ? data.ServiceMain : UserInfo.UserServiceMain
+    );
+    sessionStorage.setItem(
+      "userCheckCategory",
+      data.CheckCategory ? data.CheckCategory : UserInfo.UserCheckedCategory
+    );
+    sessionStorage.setItem(
+      "userUsedSNS",
+      data.UsedSNS ? data.UsedSNS : UserInfo.UsedSNS
+    );
     sessionStorage.setItem("basicPrice", data.basicPrice);
     sessionStorage.setItem("basicText", data.basicText);
     sessionStorage.setItem("expertPrice", data.expertPrice);
@@ -75,14 +107,7 @@ export default function MyPageIFContainer() {
     await router.push(`/myPage/detail/${UserInfo.UserEmail}`);
   };
 
-  /* 
-  이미지 수정시 필요한것
-  1. hidden input(type=File)버튼.
-  2. 파일 선택시 보여줄 이미지 
-    (삼항선택자로 선택된 이미지가 없으면 기존 img태그, 이미지 선택을 했다면 미리보기용 img태그를 보여준다)
-  3. 선택 완료후 변경사항 저장 버튼을 누르면 storage에 저장되게하는 함수.
-  */
-
+  // 이미지 수정 프로세스
   const imgRef = useRef();
   /** 1. hidden Input을 위한 Ref함수 */
   const onClickRef = () => {
@@ -94,6 +119,44 @@ export default function MyPageIFContainer() {
     const imageSrc = URL.createObjectURL(event.target.files?.[0]);
     setPreview(imageSrc);
     setFile(event.target.files?.[0]);
+  };
+
+  // 가격정보 이미지 프로세스
+  const basicRef = useRef();
+  const expertRef = useRef();
+  const proRef = useRef();
+  const [basic, setBasic] = useState("");
+  const [basicFile, setBasicFile] = useState("");
+  const [expert, setExpert] = useState("");
+  const [expertFile, setExpertFile] = useState("");
+  const [pro, setPro] = useState("");
+  const [proFile, setProFile] = useState("");
+
+  const onClickBasicRef = () => {
+    basicRef.current?.click();
+  };
+  const onClickExpertRef = () => {
+    expertRef.current?.click();
+  };
+  const onClickProRef = () => {
+    proRef.current?.click();
+  };
+
+  const onChangePreviewBasic = (event: any) => {
+    const imageSrc = URL.createObjectURL(event.target.files?.[0]);
+    setBasic(imageSrc);
+    setBasicFile(event.target.files?.[0]);
+  };
+  const onChangePreviewExpert = (event: any) => {
+    const imageSrc = URL.createObjectURL(event.target.files?.[0]);
+    setExpert(imageSrc);
+    setExpertFile(event.target.files?.[0]);
+    console.log("wrokd");
+  };
+  const onChangePreviewPro = (event: any) => {
+    const imageSrc = URL.createObjectURL(event.target.files?.[0]);
+    setPro(imageSrc);
+    setProFile(event.target.files?.[0]);
   };
 
   return (
@@ -108,6 +171,18 @@ export default function MyPageIFContainer() {
       imgRef={imgRef}
       onClickPreview={onClickPreview}
       onClickRef={onClickRef}
+      basic={basic}
+      basicRef={basicRef}
+      expert={expert}
+      expertRef={expertRef}
+      pro={pro}
+      proRef={proRef}
+      onClickBasicRef={onClickBasicRef}
+      onClickExpertRef={onClickExpertRef}
+      onClickProRef={onClickProRef}
+      onChangePreviewBasic={onChangePreviewBasic}
+      onChangePreviewExpert={onChangePreviewExpert}
+      onChangePreviewPro={onChangePreviewPro}
     />
   );
 }

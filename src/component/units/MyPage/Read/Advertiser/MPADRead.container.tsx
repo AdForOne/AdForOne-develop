@@ -24,7 +24,6 @@ export default function MPADReadContainer() {
     };
     localStorage.clear();
     localStorage.setItem("userMpData", JSON.stringify(userMpData));
-    console.log(UserSnap.data());
     setRender(true);
   };
 

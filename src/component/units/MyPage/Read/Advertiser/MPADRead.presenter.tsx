@@ -1,5 +1,6 @@
 import { borderRadius } from "@mui/system";
 import Image from "next/image";
+import { useEffect } from "react";
 import MPChangeBtn from "../../../../../common/btns/MPAD/MP.ChangeBtn";
 import MPADChatBtn from "../../../../../common/btns/MPAD/MPAD.ChatBtn";
 import Tags from "../../../../../common/tags/MPAD.Tags";

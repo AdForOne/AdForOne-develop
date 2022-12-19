@@ -106,16 +106,19 @@ export default function MPIFReadPresenter(props: IPropsMPIFRead) {
       <S.DivideLine></S.DivideLine>
       <S.PriceCardWrapper>
         <MPIFPriceCard
+          imgSrc={MpData.basicImg}
           cate={"베이직"}
           price={MpData.basicPrice}
           text={MpData.basicText}
         />
         <MPIFPriceCard
+          imgSrc={MpData.expertImg}
           cate={"익스퍼트"}
           price={MpData.expertPrice}
           text={MpData.expertText}
         />
         <MPIFPriceCard
+          imgSrc={MpData.proImg}
           cate={"프로"}
           price={MpData.proPrice}
           text={MpData.proText}

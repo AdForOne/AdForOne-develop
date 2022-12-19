@@ -28,10 +28,13 @@ export default function MPIFReadContainer() {
         value: UserSnap.data()?.value,
         basicPrice: UserSnap.data()?.basicPrice,
         basicText: UserSnap.data()?.basicText,
+        basicImg: UserSnap.data()?.basicImg,
         expertPrice: UserSnap.data()?.expertPrice,
         expertText: UserSnap.data()?.expertText,
+        expertImg: UserSnap.data()?.expertImg,
         proPrice: UserSnap.data()?.proPrice,
         proText: UserSnap.data()?.proText,
+        proImg: UserSnap.data()?.proImg,
         profileImg: UserSnap.data()?.profileImg,
       };
       localStorage.clear();
