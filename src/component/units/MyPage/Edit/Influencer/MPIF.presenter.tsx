@@ -103,12 +103,26 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
         <S.PageName>가격정보</S.PageName>
         <S.DivideLine></S.DivideLine>
         <S.PriceBox>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              props.basic
+                ? props.basic
+                : props.UserInfo.basicImg
+                ? props.UserInfo.basicImg
+                : "/MyPage/DefaultImg.png"
+            }
             alt="가격정보 기본이미지"
             width="180"
             height="150"
-          ></Image>
+            style={{ borderRadius: 5 }}
+            onClick={props.onClickBasicRef}
+          ></img>
+          <input
+            type="file"
+            hidden
+            ref={props.basicRef}
+            onChange={props.onChangePreviewBasic}
+          ></input>
           <S.PriceInfo>
             <MPIFPriceInputShort
               label="베이직(원)"
@@ -125,12 +139,26 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
           </S.PriceInfo>
         </S.PriceBox>
         <S.PriceBox>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              props.expert
+                ? props.expert
+                : props.UserInfo.expertImg
+                ? props.UserInfo.expertImg
+                : "/MyPage/DefaultImg.png"
+            }
             alt="가격정보 기본이미지"
             width="180"
             height="150"
-          ></Image>
+            onClick={props.onClickExpertRef}
+            style={{ borderRadius: 5 }}
+          ></img>
+          <input
+            type="file"
+            hidden
+            ref={props.expertRef}
+            onChange={props.onChangePreviewExpert}
+          ></input>
           <S.PriceInfo>
             <MPIFPriceInputShort
               label="익스퍼트(원)"
@@ -147,12 +175,26 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
           </S.PriceInfo>
         </S.PriceBox>
         <S.PriceBox>
-          <Image
-            src="/MyPage/DefaultImg.png"
+          <img
+            src={
+              props.pro
+                ? props.pro
+                : props.UserInfo.proImg
+                ? props.UserInfo.proImg
+                : "/MyPage/DefaultImg.png"
+            }
             alt="가격정보 기본이미지"
             width="180"
             height="150"
-          ></Image>
+            onClick={props.onClickProRef}
+            style={{ borderRadius: 5 }}
+          ></img>
+          <input
+            type="file"
+            hidden
+            ref={props.proRef}
+            onChange={props.onChangePreviewPro}
+          ></input>
           <S.PriceInfo>
             <MPIFPriceInputShort
               label="프로(원)"

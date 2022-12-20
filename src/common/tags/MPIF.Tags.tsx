@@ -18,7 +18,7 @@ export default function Tags(props: IPropsTags) {
     { label: "운동" },
     { label: "IT" },
     { label: "영상편집" },
-    { labe: "음악" },
+    { label: "음악" },
   ];
 
   let DefaultIndex = 3;

@@ -40,16 +40,32 @@ export default function useStorage() {
     await getDownloadURL(storageRef).then(async (downloadURL) => {
       try {
         console.log(downloadURL, "이미지 다운로드 완료");
-        await updateDoc(doc(db, "users", userEmail), {
-          profileImg: downloadURL,
-        });
-        sessionStorage.setItem("profileImg", downloadURL);
-        return downloadURL;
+        // 베이직
+        if (PriceCate === "basic") {
+          await updateDoc(doc(db, "users", userEmail), {
+            basicImg: downloadURL,
+          });
+          sessionStorage.setItem("basicImg", downloadURL);
+        }
+        // 익스퍼트
+        if (PriceCate === "expert") {
+          await updateDoc(doc(db, "users", userEmail), {
+            expertImg: downloadURL,
+          });
+          sessionStorage.setItem("expertImg", downloadURL);
+        }
+        // 프로
+        if (PriceCate === "pro") {
+          await updateDoc(doc(db, "users", userEmail), {
+            proImg: downloadURL,
+          });
+          sessionStorage.setItem("proImg", downloadURL);
+        }
       } catch (err) {
         console.log(err, "다운로드 에러");
       }
     });
   };
 
-  return { Upload };
+  return { Upload, UploadPriceCardImg };
 }

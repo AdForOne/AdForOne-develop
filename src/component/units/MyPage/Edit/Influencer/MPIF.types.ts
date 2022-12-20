@@ -17,10 +17,13 @@ export interface IUserInfo {
   UserServiceMain: string | null;
   basicPrice: string | null;
   basicText: string | null;
+  basicImg: string | null;
   expertPrice: string | null;
   expertText: string | null;
+  expertImg: string | null;
   proPrice: string | null;
   proText: string | null;
+  proImg: string | null;
 }
 
 // export interface IFormData {
@@ -38,4 +41,16 @@ export interface IPropsMPIF {
   imgRef: any;
   onClickPreview: (event: any) => void;
   onClickRef: () => void;
+  basic: string | undefined;
+  basicRef: any;
+  expert: string | undefined;
+  expertRef: any;
+  pro: string | undefined;
+  proRef: any;
+  onClickBasicRef: () => void;
+  onClickExpertRef: () => void;
+  onClickProRef: () => void;
+  onChangePreviewBasic: (event: any) => void;
+  onChangePreviewExpert: (event: any) => void;
+  onChangePreviewPro: (event: any) => void;
 }

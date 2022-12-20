@@ -8,6 +8,7 @@ interface IPropsMPIFPriceCard {
   price: string | null;
   text: string | null;
   cate: string;
+  imgSrc: string | null;
 }
 
 export default function MPIFPriceCard(props: IPropsMPIFPriceCard) {
@@ -17,7 +18,7 @@ export default function MPIFPriceCard(props: IPropsMPIFPriceCard) {
         <CardMedia
           component="img"
           height="200"
-          image="https://source.unsplash.com/random"
+          image={props.imgSrc ? props.imgSrc : "/MyPage/DefaultImg.png"}
           alt="test img"
         />
         <CardContent>
