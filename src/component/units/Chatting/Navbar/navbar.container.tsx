@@ -17,10 +17,8 @@ export default function NavBarContainer() {
     }
   });
 
-  // 이전페이지로 이동
-  // 수정필요
   const onClickBack = () => {
-    router.push("http://localhost:3000/myPage/edit");
+    router.push(`/myPage/detail/${sessionStorage.getItem("userEmail")}`);
   };
 
   return (
