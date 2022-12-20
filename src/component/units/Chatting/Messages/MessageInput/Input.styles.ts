@@ -25,4 +25,11 @@ export const MessageWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  /* 전역변수가 설정이 안되어있다면 메세지도 안보내지게 설정 */
+  pointer-events: ${(props: any) =>
+    props.chatUser.chatId === null ? "none" : ""};
+`;
+
+export const DataImg = styled.img`
+  height: 40px;
 `;

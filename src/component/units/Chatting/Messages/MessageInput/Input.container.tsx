@@ -15,13 +15,12 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function InputContainer() {
   const [text, setText] = useState<string>("");
-  const [img, setImg] = useState<File | null>(null);
+  const [img, setImg] = useState<string | null>(null);
   const [chatUser] = useRecoilState<any>(ChatUserInfo);
 
   // arrayUnion() 은 배열에 요소를 추가하지만 아직 존재하지 않는 요소만 추가합니다.
   const MessageSubmit = async () => {
     if (text === "" && img === null) {
-      console.log("빈값");
       return;
     }
     if (img) {
@@ -42,9 +41,7 @@ export default function InputContainer() {
         },
         () => {
           // 업로드 후 url 가져와서 db 업데이트
-          console.log(text);
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            console.log("url", downloadURL);
             await updateDoc(doc(db, "chats", chatUser.chatId), {
               messages: arrayUnion({
                 id: uuid(),
@@ -91,12 +88,25 @@ export default function InputContainer() {
   };
   const onChangeIMG = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
-      setImg(e.target.files[0]); //error
+      encodeFileToBase64(e.target.files[0]); //error
     }
+  };
+
+  const encodeFileToBase64 = (fileBlob: any) => {
+    const reader: any = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve: any) => {
+      reader.onload = () => {
+        setImg(reader.result);
+        resolve();
+      };
+    });
   };
   return (
     <InputUI
+      chatUser={chatUser}
       text={text}
+      img={img}
       onChangeText={onChangeText}
       onChangeIMG={onChangeIMG}
       MessageSubmit={MessageSubmit}
