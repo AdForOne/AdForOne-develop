@@ -15,7 +15,9 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
         <S.HeaderImg>
           <img
             src={
-              props.UserInfo?.UserProfileImg
+              props.preview
+                ? props.preview
+                : props.UserInfo?.UserProfileImg
                 ? props.UserInfo?.UserProfileImg
                 : "/Profile.png"
             }
@@ -23,6 +25,13 @@ export default function MyPageADPresenter(props: IPropsMPAD) {
             width="300"
             height="200"
             style={{ borderRadius: 5, cursor: "pointer" }}
+            onClick={props.onClickRef}
+          />
+          <input
+            type="file"
+            hidden
+            ref={props.imgRef}
+            onChange={props.onClickPreview}
           />
         </S.HeaderImg>
         <S.HeaderInfo>

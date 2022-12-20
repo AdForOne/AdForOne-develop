@@ -114,7 +114,7 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             alt="가격정보 기본이미지"
             width="180"
             height="150"
-            style={{ borderRadius: 5 }}
+            style={{ borderRadius: 5, cursor: "pointer" }}
             onClick={props.onClickBasicRef}
           ></img>
           <input
@@ -151,7 +151,7 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             width="180"
             height="150"
             onClick={props.onClickExpertRef}
-            style={{ borderRadius: 5 }}
+            style={{ borderRadius: 5, cursor: "pointer" }}
           ></img>
           <input
             type="file"
@@ -187,7 +187,7 @@ export default function MyPageIFPresenter(props: IPropsMPIF) {
             width="180"
             height="150"
             onClick={props.onClickProRef}
-            style={{ borderRadius: 5 }}
+            style={{ borderRadius: 5, cursor: "pointer" }}
           ></img>
           <input
             type="file"

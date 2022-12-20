@@ -9,17 +9,17 @@ interface IPropsQuill {
   onChange: (value: string) => void;
   default: string | null;
 }
+const QuillWrapper = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
+const ServiceText = styled(QuillWrapper)`
+  width: 100%;
+  height: 350px;
+`;
 
 export default function MPIFQuill(props: IPropsQuill) {
-  const QuillWrapper = dynamic(() => import("react-quill"), {
-    ssr: false,
-    loading: () => <p>Loading ...</p>,
-  });
-  const ServiceText = styled(QuillWrapper)`
-    width: 100%;
-    height: 350px;
-  `;
-
+  const format = {};
   return (
     <ServiceText
       onChange={props.onChange}

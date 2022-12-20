@@ -15,16 +15,14 @@ export interface IUserInfo {
   UserLink: string | null;
 }
 
-export interface IDataForm {
-  Link: string | null;
-  SNSLink: string | null;
-  UsedSNS: string | null;
-}
-
 export interface IPropsMPAD {
   Link: any;
   UserInfo: IUserInfo | undefined;
+  preview: string;
+  imgRef: any;
   register: UseFormRegister<FieldValues>;
   handleSubmit: UseFormHandleSubmit<FieldValues>;
+  onClickRef: () => void;
+  onClickPreview: (event: any) => void;
   onClickSubmit: SubmitHandler<FieldValues>;
 }
