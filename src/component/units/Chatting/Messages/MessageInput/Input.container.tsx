@@ -15,7 +15,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function InputContainer() {
   const [text, setText] = useState<string>("");
-  const [img, setImg] = useState<string | null>(null);
+  const [img, setImg] = useState<any>(null);
+  const [imgfile, setFile] = useState();
   const [chatUser] = useRecoilState<any>(ChatUserInfo);
 
   // arrayUnion() 은 배열에 요소를 추가하지만 아직 존재하지 않는 요소만 추가합니다.
@@ -25,12 +26,13 @@ export default function InputContainer() {
     }
     if (img) {
       const storageRef = ref(storage, "Chat " + uuid());
-      const uploadTask = uploadBytesResumable(storageRef, img);
+      const uploadTask = uploadBytesResumable(storageRef, imgfile);
 
       uploadTask.on(
         "state_changed",
         (snapshot: any) => {
           // 업로드 %
+          console.log(snapshot);
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(`Upload is ${progress}% done`);
@@ -88,7 +90,8 @@ export default function InputContainer() {
   };
   const onChangeIMG = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
-      encodeFileToBase64(e.target.files[0]); //error
+      encodeFileToBase64(e.target.files[0]); // error
+      setFile(e.target.files[0]);
     }
   };
 
