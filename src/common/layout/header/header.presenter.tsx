@@ -20,10 +20,7 @@ export default function HeaderPresenter(props: IPropsHeader) {
       </S.Logo>
       {props.isLogin ? (
         <S.HeaderBtnWrapper>
-          <S.UserInfo
-            id={`/myPage/detail/${sessionStorage.getItem("userEmail")}`}
-            onClick={props.onClickMoveToPage}
-          >
+          <S.UserInfo onClick={props.onClickMoveToMyPage}>
             {props.UserName}님의 마이페이지
           </S.UserInfo>
           <HeaderLogoutBtn onClick={props.onClickLogOut} />

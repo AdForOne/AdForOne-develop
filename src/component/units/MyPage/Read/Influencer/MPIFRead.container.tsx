@@ -44,12 +44,14 @@ export default function MPIFReadContainer() {
   };
   useEffect(() => {
     fetchPage();
-  }, []);
+  });
 
   const onClickMoveToEdit = () => {
     router.push(`/myPage/edit`);
   };
   if (render) {
     return <MPIFReadPresenter onClickMoveToEdit={onClickMoveToEdit} />;
+  } else {
+    return <div>loading...</div>;
   }
 }

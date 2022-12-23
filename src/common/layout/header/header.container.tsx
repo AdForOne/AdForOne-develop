@@ -1,11 +1,7 @@
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore/lite";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { MouseEvent, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
 import { auth, db } from "../../firebase/firebase.config";
-import { AccessToken } from "../../recoil/token";
-import { UserDisplayName } from "../../recoil/user";
 import HeaderPresenter from "./header.presenter";
 
 export default function HeaderContainer() {
@@ -16,7 +12,10 @@ export default function HeaderContainer() {
   const onClickMoveToPage = (event: MouseEvent<HTMLImageElement>) => {
     const href = event.currentTarget.id;
     router.push(href);
-    console.log(sessionStorage.getItem("UserInfo"));
+  };
+  const onClickMoveToMyPage = async () => {
+    await router.push(`/myPage/detail/${sessionStorage.getItem("userEmail")}`);
+    router.reload();
   };
 
   const onClickLogOut = () => {
@@ -46,6 +45,7 @@ export default function HeaderContainer() {
       onClickLogOut={onClickLogOut}
       UserName={UserName}
       isLogin={isLogin}
+      onClickMoveToMyPage={onClickMoveToMyPage}
     />
   );
 }

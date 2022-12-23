@@ -9,6 +9,7 @@ export default function MPADReadContainer() {
   const [render, setRender] = useState(false);
 
   const fetchPage = async () => {
+    localStorage.clear();
     const UserInfo = doc(db, "users", `${router.query?.email}`);
     const UserSnap = await getDoc(UserInfo);
     const userMpData = {
@@ -22,7 +23,6 @@ export default function MPADReadContainer() {
       value: UserSnap.data()?.value,
       profileImg: UserSnap.data()?.profileImg,
     };
-    localStorage.clear();
     localStorage.setItem("userMpData", JSON.stringify(userMpData));
     setRender(true);
   };
@@ -37,5 +37,7 @@ export default function MPADReadContainer() {
 
   if (render) {
     return <MPADReadPresenter onClickMoveToEdit={onClickMoveToEdit} />;
+  } else {
+    return <div>loading...</div>;
   }
 }
