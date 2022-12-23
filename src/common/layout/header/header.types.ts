@@ -5,4 +5,5 @@ export interface IPropsHeader {
   onClickLogOut: () => void;
   UserName: string;
   isLogin: any;
+  onClickMoveToMyPage: () => void;
 }
