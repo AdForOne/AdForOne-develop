@@ -116,7 +116,7 @@ export default function SignupPresenter(props: any) {
             {...props.register("passwordCheck")}
           />
           {/* SNS 체크박스 */}
-          {props.value == "인플루언서" ? (
+          {props.value === "인플루언서" ? (
             <Autocomplete
               isOptionEqualToValue={(option, value) => option.id === value.id}
               disablePortal
@@ -149,7 +149,7 @@ export default function SignupPresenter(props: any) {
               )}
             />
           )}
-          {props.value == "인플루언서" ? (
+          {props.value === "인플루언서" ? (
             <TextField
               margin="normal"
               fullWidth
@@ -173,7 +173,7 @@ export default function SignupPresenter(props: any) {
             />
           )}
           {/* 카테고리 태그 */}
-          {props.value == "인플루언서" ? (
+          {props.value === "인플루언서" ? (
             <Autocomplete
               isOptionEqualToValue={(option, value) => option.id === value.id}
               value={props.Cate}
