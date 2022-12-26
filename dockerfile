@@ -2,8 +2,6 @@ FROM node:16
 
 WORKDIR /ADFO/
 COPY . /ADFO/
-COPY ./package.json /ADFO/
-COPY ./yarn.lock /ADFO/
 
 RUN export NEXT_PUBLIC_API_KEY=AIzaSyDFTIrjcGgFGU_f48mlky95NX2V6gqr6Ug
 RUN export NEXT_PUBLIC_AUTH_DOMAIN=adfo-effc3.firebaseapp.com
