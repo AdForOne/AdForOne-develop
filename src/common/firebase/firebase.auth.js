@@ -25,8 +25,8 @@ export default function useSignin() {
             // Profile updated!
             // ...
           })
-          .catch((error) => {
-            console.log(error.message);
+          .catch((e) => {
+            console.log(e.error);
           });
         try {
           await setDoc(doc(db, "users", email), {

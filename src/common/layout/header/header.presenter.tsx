@@ -9,14 +9,14 @@ export default function HeaderPresenter(props: IPropsHeader) {
   return (
     <S.Outline>
       <S.Logo>
-        <Image
+        <img
           src="/header/Logo.png"
           alt="웹페이지 상단 ADFO로고"
           width="130"
           height="32"
           id="/main"
           onClick={props.onClickMoveToPage}
-        ></Image>
+        ></img>
       </S.Logo>
       {props.isLogin ? (
         <S.HeaderBtnWrapper>

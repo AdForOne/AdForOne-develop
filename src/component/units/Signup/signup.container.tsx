@@ -84,7 +84,6 @@ export default function SignupContainer() {
         value
       );
       const url = await Upload(file, data.email);
-      console.log(url);
       router.push("/login");
     } else {
       await signIn(
@@ -97,7 +96,6 @@ export default function SignupContainer() {
         value
       );
       const url = await Upload(file, data.email);
-      console.log(url);
       router.push("/login");
     }
   };

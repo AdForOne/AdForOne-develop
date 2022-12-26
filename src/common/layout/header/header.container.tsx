@@ -25,9 +25,7 @@ export default function HeaderContainer() {
         router.push("/login");
         alert("로그아웃 되었습니다.");
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch((e) => {});
   };
 
   onAuthStateChanged(auth, async (user) => {

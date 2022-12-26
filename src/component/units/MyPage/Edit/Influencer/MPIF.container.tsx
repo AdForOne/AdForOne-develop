@@ -151,7 +151,6 @@ export default function MyPageIFContainer() {
     const imageSrc = URL.createObjectURL(event.target.files?.[0]);
     setExpert(imageSrc);
     setExpertFile(event.target.files?.[0]);
-    console.log("wrokd");
   };
   const onChangePreviewPro = (event: any) => {
     const imageSrc = URL.createObjectURL(event.target.files?.[0]);

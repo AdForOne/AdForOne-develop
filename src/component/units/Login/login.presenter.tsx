@@ -1,5 +1,4 @@
 import { Button, Grid, Link, TextField } from "@mui/material";
-import Image from "next/image";
 import * as LS from "./login.styles";
 
 export default function LoginPresenter(props: any) {
@@ -30,12 +29,12 @@ export default function LoginPresenter(props: any) {
           {/* Grid xs때는 이미지 없어지니까 12로 기준설정  */}
           <LS.LoginWrapper>
             <LS.LoginHeader>
-              <Image
+              <img
                 alt="로그인화면 로고"
                 width="64"
                 height="64"
-                src="/Profil.png"
-              ></Image>
+                src="/Profile.png"
+              ></img>
               로그인
             </LS.LoginHeader>
             {/* LoginForm */}

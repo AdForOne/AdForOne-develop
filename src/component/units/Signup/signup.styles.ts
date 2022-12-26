@@ -23,13 +23,11 @@ export const ImageWrapper = styled.div`
   height: 125px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 `;
 
 export const Imagebutton = styled.div`
   width: 150px;
-  height: 150px;
   margin-top: 6px;
   text-align: center;
   border: 1px solid #18a0fb;
