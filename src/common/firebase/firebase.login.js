@@ -25,7 +25,6 @@ export default function useLogin() {
 
         if (docSnap.exists()) {
           const UserInfo = docSnap.data();
-          console.log(UserInfo);
           sessionStorage.setItem("userEmail", UserInfo.email);
           sessionStorage.setItem("userUsedSNS", UserInfo.UsedSNS);
           sessionStorage.setItem("userSNSLink", UserInfo.SNSLink);

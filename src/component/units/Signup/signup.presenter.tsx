@@ -8,7 +8,6 @@ import {
   TextField,
 } from "@mui/material";
 
-import Image from "next/image";
 import { useEffect } from "react";
 import * as SU from "./signup.styles";
 
@@ -26,7 +25,7 @@ export default function SignupPresenter(props: any) {
   });
   return (
     <SU.Wrapper>
-      <Image src="/header/Logo.png" alt="ADFO로고" width="200" height="48" />
+      <img src="/header/Logo.png" alt="ADFO로고" width="200" height="48" />
       <SU.SignupHeader>회원가입</SU.SignupHeader>
 
       {/* Radio */}
@@ -56,9 +55,7 @@ export default function SignupPresenter(props: any) {
             />
             <SU.ImageBox
               src={props.preview ? props.preview : "/Profile.png"}
-              alt=""
-              width={100}
-              height={100}
+              alt="프로필 사진 미리보기"
             />
             <SU.Imagebutton onClick={props.onClickUpload}>
               프로필 사진 설정

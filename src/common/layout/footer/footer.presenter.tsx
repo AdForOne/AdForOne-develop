@@ -48,12 +48,12 @@ export default function FooterPresenter(props) {
         </Fade>
       </Modal>
       <S.Logo>
-        <Image
+        <img
           src="/header/Logo.png"
           alt="웹페이지 하단 ADFO로고"
           width="130"
           height="30"
-        ></Image>
+        ></img>
       </S.Logo>
       <S.MiddleText>ⓒKMS,LJH의 포트폴리오입니다.</S.MiddleText>
       <S.LinkWrapper>
