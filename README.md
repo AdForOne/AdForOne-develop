@@ -1,4 +1,4 @@
-# ADFO
+# ADFO - 토이프로젝트
 
 ![Logo](https://user-images.githubusercontent.com/72030487/219264765-adae20c3-5a2c-4cb8-ab27-983c703cac26.png)
 
